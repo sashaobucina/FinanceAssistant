@@ -1,0 +1,79 @@
+{
+  "rasa_nlu_data": {
+    "lookup_tables": [],
+    "common_examples": [
+      {
+        "text": "what is the stock price of aapl",
+        "intent": "stockPrice",
+        "entities": [
+          {
+            "start": 27,
+            "end": 31,
+            "value": "aapl",
+            "entity": "ticker"
+          }
+        ]
+      },
+      {
+        "text": "stock price of goog",
+        "intent": "stockPrice",
+        "entities": [
+          {
+            "start": 15,
+            "end": 19,
+            "value": "aapl",
+            "entity": "ticker"
+          }
+        ]
+      },
+      {
+        "text": "stock price fb",
+        "intent": "stockPrice",
+        "entities": [
+          {
+            "start": 12,
+            "end": 14,
+            "value": "fb",
+            "entity": "ticker"
+          }
+        ]
+      },
+      {
+        "text": "give stock price rbc",
+        "intent": "stockPrice",
+        "entities": [
+          {
+            "start": 17,
+            "end": 20,
+            "value": "fb",
+            "entity": "ticker"
+          }
+        ]
+      },
+      {
+        "text": "income statement for amzn",
+        "intent": "incomeStatement",
+        "entities": [
+          {
+            "start": 21,
+            "end": 25,
+            "value": "fb",
+            "entity": "ticker"
+          }
+        ]
+      },
+      {
+        "text": "what is the income statement for msft",
+        "intent": "incomeStatement",
+        "entities": [
+          {
+            "start": 33,
+            "end": 37,
+            "value": "fb",
+            "entity": "ticker"
+          }
+        ]
+      }
+    ]
+  }
+}

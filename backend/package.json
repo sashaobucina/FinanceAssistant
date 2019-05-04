@@ -1,0 +1,39 @@
+{
+  "name": "statement-extractor",
+  "version": "1.0.0",
+  "description": "A web service that does financial analysis and summaries.",
+  "main": "src/server.ts",
+  "scripts": {
+    "fmt": "prettier --parser typescript --write \"src/**/*.ts\" \"test/**/*.ts\" ",
+    "fmtjs": "prettier --write \"src/*/*.json\" \"src/*/*.js\" \"test/*/*.json\" \"test/*/*.js\" \"*.json\"",
+    "tlint": "tslint --fix -c tslint.json \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "npm run tlint && npm run fmt && npm run fmtjs",
+    "tsc": "tsc",
+    "test": "mocha -r ts-node/register \"test/**/*_test.ts\"",
+    "all": "npm run lint && npm run tsc && npm run test",
+    "start": "node -r ts-node/register src/server.ts"
+  },
+  "author": "Sasha Obucina",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "^5.2.6",
+    "@types/sinon": "^7.0.11",
+    "mocha": "^6.1.4",
+    "prettier": "^1.17.0",
+    "sinon": "^7.3.2",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "@types/request-promise-native": "^1.0.15",
+    "@types/yaml": "^1.0.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "ts-node": "^8.1.0",
+    "yaml": "^1.5.0"
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "intent": "stockPrice",
+    "sentences": [
+      "what is the stock price for %ticker%",
+      "stock price for %ticker",
+      "real time stock price for %ticker%",
+      "how is %ticker% doing"
+    ]
+  },
+  {
+    "intent": "companyRating",
+    "sentences": [
+      "company rating for %ticker%",
+      "how is %ticker% rated",
+      "what is the company rating for %ticker%",
+      "rating for %ticker%"
+    ]
+  }
+]
