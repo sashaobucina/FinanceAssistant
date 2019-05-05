@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { IIntent } from "./intents";
+import { ChatResponse } from "./interfaces/chat_response";
 import { ILogger } from "./interfaces/logger";
 import { IRasaResponse } from "./interfaces/rasa";
 import { RasaNormalizer } from "./normalizer";
@@ -9,8 +10,13 @@ import { RasaVerifier } from "./verifier";
 export type Chat = (req: Request, res: Response) => void;
 
 export const failureResponses = {
-  understanding: "Sorry, I could not understand your message",
-  wrong: "Something went wrong, please try again later."
+  confidenceTooLow: "Sorry, I could not understand your message.",
+  connectionIssue:
+    "Server may be temporarily down, I could not parse your question at this moment.",
+  noIntentMapping:
+    "Sorry, you asked something outside the scope of my knowledge.",
+  runtimeErr:
+    "Something went wrong while parsing your question, please try again later."
 };
 
 export const chatFactory = (
@@ -31,29 +37,47 @@ export const chatFactory = (
           nlpResponse
         )}`
       );
-      if (intentStr === "nullIntent") {
-        res.status(404).send(failureResponses.understanding);
+      if (intentStr === "NullIntent") {
+        res.send(
+          new ChatResponse(
+            { error: failureResponses.noIntentMapping, status: '400' },
+            "NullIntent",
+            false
+          )
+        );
       } else if (confidence < 0.5) {
-        res.status(404).send(failureResponses.understanding);
+        res.send(
+          new ChatResponse(
+            { error: failureResponses.confidenceTooLow, status: '400' },
+            "NullIntent",
+            false
+          )
+        );
       } else {
         const intentPromise = intentMap[intentStr].call(nlpResponse.entities);
         intentPromise
-          .then(result => {
-            if (result.success) {
-              res.send(result);
-            } else {
-              res.status(404).send(failureResponses.wrong);
-            }
-          })
+          .then(result => res.send(result))
           .catch(err => {
             logger.logError(err);
-            res.status(404).send(failureResponses.wrong);
+            res.send(
+              new ChatResponse(
+                { error: failureResponses.runtimeErr, status: 404 },
+                "NullIntent",
+                false
+              )
+            );
           });
       }
     })
     .catch(err => {
       logger.logError(err);
       logger.logError(`Failed to parse the question - "${question}"`);
-      res.send(failureResponses.wrong);
+      res.send(
+        new ChatResponse(
+          { error: failureResponses.connectionIssue, status: 503 },
+          "NullIntent",
+          false
+        )
+      );
     });
 };

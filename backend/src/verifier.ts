@@ -1,13 +1,11 @@
 import { IEntity } from "./interfaces/rasa";
-import { TickerListBox } from "./interfaces/symbols";
+import { TickerMapBox } from "./interfaces/symbols";
 
 export class RasaVerifier {
-  constructor(private readonly tickerListBox: TickerListBox) {}
+  constructor(private readonly tickerMapBox: TickerMapBox) {}
 
   public verify(entities: IEntity[]): IEntity[] {
-    const symbols = this.tickerListBox.tickerList.map(ticker =>
-      ticker.symbol.toLowerCase()
-    );
+    const symbols = Array.from(this.tickerMapBox.tickerMap.keys());
     return entities.filter(entity => symbols.includes(entity.value));
   }
 }

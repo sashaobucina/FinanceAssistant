@@ -1,19 +1,17 @@
 export interface IRawTicker {
   Ticker: string;
-  Price: number;
   companyName: string;
 }
 
 export class Ticker {
   constructor(
     public readonly symbol: string,
-    public readonly companyName: string,
-    public readonly price: number
+    public readonly companyName: string
   ) {}
 }
 
-export class TickerListBox {
-  constructor(public tickerList: Ticker[]) {}
+export class TickerMapBox {
+  constructor(public tickerMap: Map<string, Ticker>) {}
 }
 
 export interface IRealTimeStockPrice {

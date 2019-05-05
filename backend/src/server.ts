@@ -2,11 +2,13 @@ import bodyParser from "body-parser";
 import express from "express";
 import requestPromise from "request-promise-native";
 import { chatFactory } from "./chat";
+import { cors } from "./cors";
 import { dataGeneratorFactory } from "./data_generator";
 import { DataLoader } from "./data_loader";
+import { EntityFinder } from "./entity_finder";
 import { IIntentMap, intents } from "./intents";
 import { ILogger } from "./interfaces/logger";
-import { TickerListBox } from "./interfaces/symbols";
+import { Ticker, TickerMapBox } from "./interfaces/symbols";
 import { IRasaConfig, ISentence } from "./interfaces/training_data";
 import { Requester } from "./requester";
 import { trainerFactory } from "./trainer";
@@ -18,6 +20,7 @@ const rasaConfig: IRasaConfig = require("./data/rasa_config.json");
 const sentences: ISentence[] = require("./data/sentences.json");
 
 app.use(bodyParser.json());
+app.use(cors);
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -29,12 +32,13 @@ const logger: ILogger = {
   log: (o: any) => console.log(o),
   logError: (err: string | Error) => console.error(err)
 };
+const tickerMapBox = new TickerMapBox(new Map<string, Ticker>());
 const requester = new Requester(httpRequests, logger);
-const intentMap: IIntentMap = intents(requester);
-const tickerListBox = new TickerListBox([]);
-const dataLoader = new DataLoader(requester, tickerListBox, logger);
-const dataGenerator = dataGeneratorFactory(tickerListBox, intentMap, sentences);
-const verifier = new RasaVerifier(tickerListBox);
+const entityFinder = new EntityFinder(tickerMapBox);
+const intentMap: IIntentMap = intents(requester, entityFinder);
+const dataLoader = new DataLoader(requester, tickerMapBox, logger);
+const dataGenerator = dataGeneratorFactory(tickerMapBox, intentMap, sentences);
+const verifier = new RasaVerifier(tickerMapBox);
 const trainer = trainerFactory(
   dataLoader,
   dataGenerator,

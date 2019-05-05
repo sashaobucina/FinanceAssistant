@@ -13,20 +13,20 @@ export class Requester {
     private readonly logger: ILogger
   ) {}
 
-  public getCompanyRating(symbol: string): Promise<number> {
-    const url = `https://financialmodelingprep.com/api/company/rating/${symbol}?datatype=json`
-    const t0 = performance.now()
+  public getCompanyRating(symbol: string): Promise<{ rating: number }> {
+    const url = `https://financialmodelingprep.com/api/company/rating/${symbol}?datatype=json`;
+    const t0 = performance.now();
     return this.httpRequest({
       json: true,
       method: "GET",
       uri: url
-    }).then((result) => {
-      const t1 = performance.now()
+    }).then(result => {
+      const t1 = performance.now();
       this.logger.log(
         `Took ${(t1 - t0).toFixed(2)} ms to get company rating for ${symbol}`
-      )
-      return result[symbol]
-    })
+      );
+      return result[symbol];
+    });
   }
 
   public getRealTimeStockPrice(symbol: string): Promise<IRealTimeStockPrice> {
@@ -60,8 +60,7 @@ export class Requester {
         `Took ${(t1 - t0).toFixed(2)} ms to get all valid symbols`
       );
       return result.map(
-        rawTicker =>
-          new Ticker(rawTicker.Ticker, rawTicker.companyName, rawTicker.Price)
+        rawTicker => new Ticker(rawTicker.Ticker, rawTicker.companyName)
       );
     });
   }

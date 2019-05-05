@@ -4,21 +4,21 @@ import {
   IRasaTrainingData,
   IRasaTrainingEntity
 } from "./interfaces/rasa";
-import { Ticker, TickerListBox } from "./interfaces/symbols";
+import { TickerMapBox } from "./interfaces/symbols";
 import { ISentence } from "./interfaces/training_data";
 
 export const dataGeneratorFactory = (
-  tickerListBox: TickerListBox,
+  tickerMapBox: TickerMapBox,
   intentMap: IIntentMap,
   sentences: ISentence[]
 ): DataGenerator => {
   const rand = new RandSelector(randomSelectionFactory(Math.random));
-  return new DataGenerator(tickerListBox, sentences, intentMap, rand);
+  return new DataGenerator(tickerMapBox, sentences, intentMap, rand);
 };
 
 export class DataGenerator {
   constructor(
-    private readonly tickerListBox: TickerListBox,
+    private readonly tickerMapBox: TickerMapBox,
     private readonly sentences: ISentence[],
     private readonly intentMap: IIntentMap,
     private readonly rand: RandSelector
@@ -33,7 +33,7 @@ export class DataGenerator {
         const entity = intent.info.entity;
         if (entity !== null) {
           const tickers = this.rand.selectTickers(
-            this.tickerListBox.tickerList,
+            Array.from(this.tickerMapBox.tickerMap.keys()),
             25
           );
           const entries = tickers.map(
@@ -93,15 +93,14 @@ export const validateIntent = (
 /* Randomized selection of symbols to train against */
 type RandSelection = (list: string[], amount: number) => string[];
 interface IRand {
-  selectTickers(tickerList: Ticker[], amount: number): string[];
+  selectTickers(tickers: string[], amount: number): string[];
 }
 
 export class RandSelector implements IRand {
   constructor(private readonly randomSelection: RandSelection) {}
 
-  public selectTickers(tickerList: Ticker[], amount: number): string[] {
-    const symbols = tickerList.map(ticker => ticker.symbol);
-    return this.randomSelection(symbols, amount);
+  public selectTickers(tickers: string[], amount: number): string[] {
+    return this.randomSelection(tickers, amount);
   }
 }
 
