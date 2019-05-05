@@ -22,7 +22,11 @@ export class CompanyRating {
     const ticker = this.entityFinder.extractTicker(entities);
     if (ticker === undefined) {
       return Promise.resolve(
-        new ChatResponse({ error: "Invalid ticker given" }, "NullIntent", false)
+        new ChatResponse(
+          { error: "Invalid ticker given", status: 400 },
+          "NullIntent",
+          false
+        )
       );
     }
     return this.requester

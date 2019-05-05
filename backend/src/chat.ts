@@ -40,7 +40,7 @@ export const chatFactory = (
       if (intentStr === "NullIntent") {
         res.send(
           new ChatResponse(
-            { error: failureResponses.noIntentMapping, status: '400' },
+            { error: failureResponses.noIntentMapping, status: 400 },
             "NullIntent",
             false
           )
@@ -48,7 +48,7 @@ export const chatFactory = (
       } else if (confidence < 0.5) {
         res.send(
           new ChatResponse(
-            { error: failureResponses.confidenceTooLow, status: '400' },
+            { error: failureResponses.confidenceTooLow, status: 400 },
             "NullIntent",
             false
           )
