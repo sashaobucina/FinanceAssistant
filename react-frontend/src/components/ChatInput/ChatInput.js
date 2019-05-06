@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 class ChatInput extends Component {
@@ -39,32 +39,29 @@ class ChatInput extends Component {
     const { isLoading } = this.props
     return (
       <div className="chat-input">
-        <Container>
-          <Row>
-            <Col md={{ span: 8, offset: 1 }}>
-              <Form>
-                <Form.Group controlId="formChatInput">
-                  <Form.Label>Ask me about finance!</Form.Label>
-                  <Form.Control type="text" ref={this.chatInput} placeholder="Start typing..." onKeyPress={this.handleKeyPress}></Form.Control>
-                  <Form.Text className="text-muted">
-                    I'm not always correct, but I am constantly learning.
-                  </Form.Text>
-                </Form.Group>
-              </Form>
-            </Col>
-            <Col md={2}>
-              <Button
-                className="chat-btn"
-                variant="primary"
-                disabled={isLoading}
-                type="submit"
-                onClick={this.sendMessage}>
-                  {isLoading ? "Loading...": "Send"}
-              </Button>
-            </Col>
-          </Row>
-          {/* <h3>{JSON.stringify(this.state.data, null, 2)}</h3> */}
-        </Container>
+        <Row>
+          <Col md={{ span: 8, offset: 1 }}>
+            <Form>
+              <Form.Group controlId="formChatInput">
+                <Form.Label>Ask me about finance!</Form.Label>
+                <Form.Control type="text" ref={this.chatInput} placeholder="Start typing..." onKeyPress={this.handleKeyPress}></Form.Control>
+                <Form.Text className="text-muted">
+                  I'm not always correct, but I am constantly learning.
+                </Form.Text>
+              </Form.Group>
+            </Form>
+          </Col>
+          <Col md={2}>
+            <Button
+              className="chat-btn"
+              variant="primary"
+              disabled={isLoading}
+              type="submit"
+              onClick={this.sendMessage}>
+                {isLoading ? "Loading...": "Send"}
+            </Button>
+          </Col>
+        </Row>
       </div>
     )
   }

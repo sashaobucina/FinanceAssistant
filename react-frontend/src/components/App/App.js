@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ChatInput from '../ChatInput/ChatInput';
 import NullIntent from '../../intent_components/NullIntent';
 import Spinner from '../Spinner/Spinner';
+import { Container } from 'react-bootstrap';
+import About from '../About/About';
 
 class App extends Component {
   constructor(props) {
@@ -55,15 +57,17 @@ class App extends Component {
     const { isLoading, component } = this.state
     return (
       <div className="App">
-        <ChatInput className="chat-input" handleViewChange={this.handleViewChange} isLoading={isLoading} />
-        <div className="intent-view">
-          {component === null ? (
-            <div>Add About page on landing!!!</div>
-          ): (
-            component
-          )}
-        </div>
-        <Spinner isLoading={isLoading} />
+        <Container>
+          <ChatInput className="chat-input" handleViewChange={this.handleViewChange} isLoading={isLoading} />
+          <div className="intent-view">
+            {component === null ? (
+              <About />
+            ): (
+              component
+            )}
+          </div>
+          <Spinner isLoading={isLoading} />
+        </Container>
       </div>
     )
   };

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Row, Col } from "react-bootstrap";
 
 class CompanyRating extends Component {
   showRating(rating) {
@@ -6,10 +7,15 @@ class CompanyRating extends Component {
   }
 
   render() {
-    console.log(this.props.data)
     const { rating, ticker } = this.props.data
     return (
-      <div>{ticker.companyName}'s Company Rating: {this.showRating(rating)}</div>
+      <Row>
+        <Col md={{ span: 10, offset: 1 }}>
+          <div className="company-rating">
+            {ticker.companyName}'s Company Rating: {this.showRating(rating)}
+          </div>
+        </Col>
+      </Row>
     )
   }
 }
