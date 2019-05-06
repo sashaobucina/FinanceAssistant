@@ -1,6 +1,7 @@
+import { json } from "body-parser";
 import { performance } from "perf_hooks";
 import YAML from "yaml";
-import { IIncomeStatement } from "./interfaces/income_statement";
+import { IIncomeStatement } from "./interfaces/financials";
 import { ILogger } from "./interfaces/logger";
 import { RequestType } from "./interfaces/requests";
 import { IRawTicker, IRealTimeStockPrice, Ticker } from "./interfaces/symbols";
@@ -66,18 +67,27 @@ export class Requester {
   }
 
   public getIncomeStatment(ticker: string): Promise<IIncomeStatement> {
-    const url = `https://financialmodelingprep.com/api/financials/income-statement/${ticker}?datatype=json`;
+    const baseUrl = `https://financialmodelingprep.com/api/financials/income-statement/${ticker}`;
     const t0 = performance.now();
-    return this.httpRequest({
-      json: true,
-      method: "GET",
-      uri: url
-    }).then((result: any) => {
+    const promises: Array<Promise<any>> = [
+      this.httpRequest({
+        json: true,
+        method: "GET",
+        uri: baseUrl + "?datatype=json"
+      }),
+      this.httpRequest({
+        json: false,
+        method: "GET",
+        uri: baseUrl + "?datatype=csv"
+      })
+    ];
+    return Promise.all(promises).then((results: any[]) => {
+      const [jsonData, csvData] = results;
       const t1 = performance.now();
       this.logger.log(
         `Took ${(t1 - t0).toFixed(2)} ms to get income statement for ${ticker}`
       );
-      return purifyIncomeStatement(ticker, result);
+      return purifyIncomeStatement(ticker, jsonData, csvData);
     });
   }
 

@@ -16,5 +16,14 @@
       "what is the company rating for %ticker%",
       "rating for %ticker%"
     ]
+  },
+  {
+    "intent": "incomeStatement",
+    "sentences": [
+      "income statement for %ticker%",
+      "give me the income statement for %ticker%",
+      "what is the income statement for %ticker%",
+      "income statment %ticker%"
+    ]
   }
 ]

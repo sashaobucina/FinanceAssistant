@@ -26,58 +26,71 @@ export const chatFactory = (
   logger: ILogger
 ): Chat => (req: Request, res: Response): void => {
   const question = req.body.message.toLowerCase().trim();
-  requester
-    .parseQuestion(question, "financebuddy")
-    .then((rawResponse: IRasaResponse) => {
-      const nlpResponse = new RasaNormalizer(rawResponse, verifier).normalize();
-      const intentStr = nlpResponse.intent;
-      const confidence = nlpResponse.confidence;
-      logger.log(
-        `Got back following response from the model: ${JSON.stringify(
-          nlpResponse
-        )}`
-      );
-      if (intentStr === "NullIntent") {
+  if (question === undefined) {
+    res.send(
+      new ChatResponse(
+        { error: failureResponses.runtimeErr },
+        "NullIntent",
+        false
+      )
+    );
+  } else {
+    requester
+      .parseQuestion(question, "financebuddy")
+      .then((rawResponse: IRasaResponse) => {
+        const nlpResponse = new RasaNormalizer(
+          rawResponse,
+          verifier
+        ).normalize();
+        const intentStr = nlpResponse.intent;
+        const confidence = nlpResponse.confidence;
+        logger.log(
+          `Got back following response from the model: ${JSON.stringify(
+            nlpResponse
+          )}`
+        );
+        if (intentStr === "NullIntent") {
+          res.send(
+            new ChatResponse(
+              { error: failureResponses.noIntentMapping, status: 400 },
+              "NullIntent",
+              false
+            )
+          );
+        } else if (confidence < 0.5) {
+          res.send(
+            new ChatResponse(
+              { error: failureResponses.confidenceTooLow, status: 400 },
+              "NullIntent",
+              false
+            )
+          );
+        } else {
+          const intentPromise = intentMap[intentStr].call(nlpResponse.entities);
+          intentPromise
+            .then(result => res.send(result))
+            .catch(err => {
+              logger.logError(err);
+              res.send(
+                new ChatResponse(
+                  { error: failureResponses.runtimeErr, status: 404 },
+                  "NullIntent",
+                  false
+                )
+              );
+            });
+        }
+      })
+      .catch(err => {
+        logger.logError(err);
+        logger.logError(`Failed to parse the question - "${question}"`);
         res.send(
           new ChatResponse(
-            { error: failureResponses.noIntentMapping, status: 400 },
+            { error: failureResponses.connectionIssue, status: 503 },
             "NullIntent",
             false
           )
         );
-      } else if (confidence < 0.5) {
-        res.send(
-          new ChatResponse(
-            { error: failureResponses.confidenceTooLow, status: 400 },
-            "NullIntent",
-            false
-          )
-        );
-      } else {
-        const intentPromise = intentMap[intentStr].call(nlpResponse.entities);
-        intentPromise
-          .then(result => res.send(result))
-          .catch(err => {
-            logger.logError(err);
-            res.send(
-              new ChatResponse(
-                { error: failureResponses.runtimeErr, status: 404 },
-                "NullIntent",
-                false
-              )
-            );
-          });
-      }
-    })
-    .catch(err => {
-      logger.logError(err);
-      logger.logError(`Failed to parse the question - "${question}"`);
-      res.send(
-        new ChatResponse(
-          { error: failureResponses.connectionIssue, status: 503 },
-          "NullIntent",
-          false
-        )
-      );
-    });
+      });
+  }
 };

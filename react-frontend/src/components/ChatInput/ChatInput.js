@@ -62,6 +62,7 @@ class ChatInput extends Component {
             </Button>
           </Col>
         </Row>
+        <hr />
       </div>
     )
   }

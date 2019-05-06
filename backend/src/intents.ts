@@ -1,6 +1,7 @@
 import { EntityFinder } from "./entity_finder";
 import { IIntentInfo } from "./info/intent_info";
 import { companyRatingFactory } from "./intents/company_rating";
+import { incomeStatementFactory } from "./intents/income_statement";
 import { stockPriceFactory } from "./intents/stock_price";
 import { ChatResponse } from "./interfaces/chat_response";
 import { IEntity } from "./interfaces/rasa";
@@ -10,11 +11,12 @@ export const intents = (
   requester: Requester,
   entityFinder: EntityFinder
 ): IIntentMap => {
-  // const incomeStatement = ({} as unknown) as IIntent; // TODO
   const companyRating = companyRatingFactory(requester, entityFinder);
+  const incomeStatement = incomeStatementFactory(requester, entityFinder);
   const stockPrice = stockPriceFactory(requester, entityFinder);
   return {
     companyRating,
+    incomeStatement,
     stockPrice
   };
 };

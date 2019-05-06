@@ -53,7 +53,7 @@ trainer.train().then(() => {
     "Sending initial parse request to model to load model into memory"
   );
   requester
-    .parseQuestion("company rating for aapl", "financebuddy")
+    .parseQuestion("income statement for aapl", "financebuddy")
     .then((res: any) => {
       console.log(res);
       const port = 8080;

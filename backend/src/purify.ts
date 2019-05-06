@@ -2,19 +2,21 @@ import {
   IAnnualEntry,
   IIncomeStatement,
   IYearlyEntry
-} from "./interfaces/income_statement";
+} from "./interfaces/financials";
 
 export const purifyIncomeStatement = (
-  ticker: string,
-  statement: any
+  symbol: string,
+  statement: any,
+  csv: string
 ): IIncomeStatement => {
-  const rawFinancials = statement[ticker];
+  const rawFinancials = statement[symbol];
   Object.keys(rawFinancials).forEach(key => {
     rawFinancials[key] = createAnnualEntry(rawFinancials[key]);
   });
   return {
+    csv,
     financials: rawFinancials,
-    symbol: ticker
+    symbol
   };
 };
 
