@@ -10,7 +10,7 @@ export class CompanyRatingInfo implements IIntentInfo {
 
   constructor() {
     this.entity = "ticker";
-    this.intent = "companyRating";
+    this.intent = "CompanyRating";
     this.shortDescription = "";
     this.longDescription = "";
     this.sampleUsages = [""];
