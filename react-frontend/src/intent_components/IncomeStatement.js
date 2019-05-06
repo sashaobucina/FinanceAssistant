@@ -14,7 +14,7 @@ class IncomeStatement extends Component {
       <>
         <Row style={{ textAlign: "center"}}>
           <Col md={12}>
-            <DownloadButton csv={csv} filename={`${ticker.symbol}IncomeStatememt.csv`}/>
+            <DownloadButton csv={csv} filename={`IncomeStatememt_${ticker.symbol}.csv`}/>
           </Col>
         </Row>
         <Row>
