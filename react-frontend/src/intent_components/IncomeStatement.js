@@ -21,7 +21,9 @@ class IncomeStatement extends Component {
           <Col md={12}>
             <div className="income-statement">
               <Table striped bordered hover>
-                <caption style={{ captionSide: "top", textAlign: "center" }}>{ticker.companyName}'s Income Statement</caption>
+                <caption style={{ captionSide: "top", textAlign: "center" }}>
+                  {ticker.companyName}'s Income Statement (in millions)
+                </caption>
                 <thead>
                   <tr>
                       <th>Financials</th>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { css } from "@emotion/core";
-import { SyncLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners";
 import { Row, Col } from "react-bootstrap";
 
 const override = css`
@@ -16,10 +16,10 @@ class Spinner extends Component {
       <Row>
         <Col md={{ span: 2, offset:5 }}>
           <div className="chat-spinner">
-          <SyncLoader
+          <BeatLoader
             css={override}
             sizeUnit={"px"}
-            size={20}
+            size={15}
             color={"#ffa723"}
             loading={this.props.isLoading} />
           </div>

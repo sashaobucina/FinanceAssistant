@@ -20,6 +20,7 @@ class ChatInput extends Component {
 
   sendMessage() {
     if (this.chatInput.current.value.length > 0) {
+      this.props.showSpinner()
       const url = 'http://localhost:8080/chat'
       const data = { message: this.chatInput.current.value }
       axios.post(url, data).then(res => {
@@ -41,7 +42,7 @@ class ChatInput extends Component {
       <div className="chat-input">
         <Row>
           <Col md={{ span: 8, offset: 1 }}>
-            <Form>
+            <Form autoComplete="off">
               <Form.Group controlId="formChatInput">
                 <Form.Label>Ask me about finance!</Form.Label>
                 <Form.Control type="text" ref={this.chatInput} placeholder="Start typing..." onKeyPress={this.handleKeyPress}></Form.Control>

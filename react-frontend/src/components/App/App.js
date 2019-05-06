@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ChatInput from '../ChatInput/ChatInput';
 import NullIntent from '../../intent_components/NullIntent';
+import EmptyDiv from "../Empty/EmptyDiv";
 import Spinner from '../Spinner/Spinner';
 import { Container } from 'react-bootstrap';
 import About from '../About/About';
@@ -10,8 +11,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isLoading: false,
-      component: null // TODO: Change to a landing page where user can get info on how to use the chatbot
+      component: null, // TODO: Change to a landing page where user can get info on how to use the chatbot
+      isLoading: false
     }
 
     /* Bindings */
@@ -22,6 +23,7 @@ class App extends Component {
 
   showSpinner() {
     this.setState(() => ({
+      component: <EmptyDiv />,
       isLoading: true
     }))
   }
@@ -43,7 +45,6 @@ class App extends Component {
   }
 
   handleViewChange = (intentName, data) => {
-    this.showSpinner()
     this.addView(intentName, data)
       .then(() => {
         this.setState({ isLoading: false})
@@ -58,7 +59,7 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
-          <ChatInput className="chat-input" handleViewChange={this.handleViewChange} isLoading={isLoading} />
+          <ChatInput className="chat-input" handleViewChange={this.handleViewChange} showSpinner={this.showSpinner} isLoading={isLoading} />
           <div className="intent-view">
             {component === null ? (
               <About />
