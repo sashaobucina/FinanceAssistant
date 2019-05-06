@@ -11,25 +11,31 @@ class IncomeStatement extends Component {
       return <IncomeStatementRow key={financial} financial={financial} values={values} />
     })
     return(
-      <Row>
-        <Col md={{ span: 10, offset: 1}}>
-          <div className="income-statement">
+      <>
+        <Row style={{ textAlign: "center"}}>
+          <Col md={12}>
             <DownloadButton csv={csv} filename={`${ticker.symbol}IncomeStatememt.csv`}/>
-            <Table striped bordered hover>
-              <caption style={{ captionSide: "top" }}>{ticker.companyName}'s Income Statement</caption>
-              <thead>
-                <tr>
-                    <th>Financials</th>
-                    {years.map(year => <th key={year}>{year}</th>)}
-                </tr>
-              </thead>
-              <tbody>
-                {tableRows}
-              </tbody>
-            </Table>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12}>
+            <div className="income-statement">
+              <Table striped bordered hover>
+                <caption style={{ captionSide: "top", textAlign: "center" }}>{ticker.companyName}'s Income Statement</caption>
+                <thead>
+                  <tr>
+                      <th>Financials</th>
+                      {years.map(year => <th key={year}>{year}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableRows}
+                </tbody>
+              </Table>
+            </div>
+          </Col>
+        </Row>
+      </>
     )
   }
 
