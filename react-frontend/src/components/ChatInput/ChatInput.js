@@ -1,20 +1,13 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import Spinner from "../Spinner/Spinner";
 import axios from "axios";
 
 class ChatInput extends Component {
   constructor(props) {
     super(props)
     this.chatInput = React.createRef()
-    this.state = {
-      intent: 'NullIntent',
-      data: {},
-      isLoading: false,
-      success: true
-    }
+
     this.handleKeyPress = this.handleKeyPress.bind(this)
-    this.showSpinner = this.showSpinner.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
   }
 
@@ -25,45 +18,25 @@ class ChatInput extends Component {
     }
   }
 
-  showSpinner() {
-    this.setState(() => ({
-      data: {},
-      isLoading: true
-    }))
-  }
-
   sendMessage() {
     if (this.chatInput.current.value.length > 0) {
-      this.showSpinner()
       const url = 'http://localhost:8080/chat'
       const data = { message: this.chatInput.current.value }
       axios.post(url, data).then(res => {
-        const nlpResponse = res.data
+        const { data, intent } = res.data
         this.chatInput.current.value = ''
-        this.props.handleViewChange(nlpResponse.intent, nlpResponse.data)
-        this.setState(() => ({
-          data: nlpResponse.data,
-          intent: nlpResponse.intent,
-          isLoading: false,
-          success: nlpResponse.success
-        }))
+        this.props.handleViewChange(intent, data)
       })
       .catch(err => {
         console.error(err)
         this.chatInput.current.value = ''
         this.props.handleViewChange('NullIntent', { error: 'Could not connect to the server', status: 503 })
-        this.setState(state => ({
-          data: { error: 'Could not connect to the server :(' },
-          intent: 'NullIntent',
-          isLoading: false,
-          success: !state.success
-        }))
       })
     }
   }
 
   render() {
-    const { isLoading } = this.state
+    const { isLoading } = this.props
     return (
       <div className="chat-input">
         <Container>
@@ -90,8 +63,7 @@ class ChatInput extends Component {
               </Button>
             </Col>
           </Row>
-          <h3>{JSON.stringify(this.state.data, null, 2)}</h3>
-          <Spinner isLoading={isLoading} />
+          {/* <h3>{JSON.stringify(this.state.data, null, 2)}</h3> */}
         </Container>
       </div>
     )
