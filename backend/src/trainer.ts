@@ -1,8 +1,8 @@
+import { DataGenerator } from "./data_generator";
+import { DataLoader } from "./data_loader";
 import { ILogger } from "./interfaces/logger";
 import { IRasaConfig, ITrainer } from "./interfaces/training_data";
 import { Requester } from "./requester";
-import { DataGenerator } from "./data_generator";
-import { DataLoader } from "./data_loader";
 
 export const trainerFactory = (
   dataLoader: DataLoader,
