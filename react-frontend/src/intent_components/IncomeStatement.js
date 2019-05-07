@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Row, Col, Table } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import DownloadButton from "../components/DownloadButton/DownloadButton";
+import { numberWithCommas } from "../helper";
+import { MDBTable, MDBTableHead, MDBTableBody, MDBCard, MDBCardHeader, MDBCardBody } from "mdbreact";
 
 class IncomeStatement extends Component {
   render() {
@@ -10,31 +12,64 @@ class IncomeStatement extends Component {
       const values = this.extractValues(financials[financial])
       return <IncomeStatementRow key={financial} financial={financial} values={values} />
     })
+    const columns = [
+      {
+        'label': 'Financials',
+        'field': 'financial'
+      },
+      {
+        'label': '2014',
+        'field': 'year1'
+      },
+      {
+        'label': '2015',
+        'field': 'year2'
+      },
+      {
+        'label': '2016',
+        'field': 'year3'
+      },
+      {
+        'label': '2017',
+        'field': 'year4'
+      },
+      {
+        'label': 'TTM',
+        'field': 'TTM'
+      }
+    ]
+    const rows = [
+      {
+        'financial': 'Revenue',
+        'year1': '0.00',
+        'year2': '11.21',
+        'year3': '2,000.54',
+        'year4': '431.34',
+        'TTM': '300.21'
+      }
+    ]
     return(
       <>
-        <Row style={{ textAlign: "center"}}>
+        <Row style={{ textAlign: "center" }}>
           <Col md={12}>
-            <DownloadButton csv={csv} filename={`IncomeStatememt_${ticker.symbol}.csv`}/>
+            <DownloadButton csv={csv} filename={`IncomeStatement_${ticker.symbol}.csv`} />
           </Col>
         </Row>
-        <Row>
+        <Row style={{ marginTop: "10px" }}>
           <Col md={12}>
-            <div className="income-statement">
-              <Table striped bordered hover>
-                <caption style={{ captionSide: "top", textAlign: "center" }}>
-                  {ticker.companyName}'s Income Statement (in millions)
-                </caption>
-                <thead>
-                  <tr>
-                      <th>Financials</th>
-                      {years.map(year => <th key={year}>{year}</th>)}
-                  </tr>
-                </thead>
-                <tbody>
-                  {tableRows}
-                </tbody>
-              </Table>
-            </div>
+            <MDBCard narrow>
+              <MDBCardHeader className="view view-cascade gradient-card-header blue-gradient d-flex justify-content-between align-items-center">
+                <p className="text-white">
+                  {ticker.companyName}'s Annual Income Statement (in millions)
+                </p>
+              </MDBCardHeader>
+              <MDBCardBody cascade>
+                <MDBTable btn fixed>
+                  <MDBTableHead columns={columns}/>
+                  <MDBTableBody rows={rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
           </Col>
         </Row>
       </>
@@ -57,7 +92,7 @@ class IncomeStatementRow extends Component {
     return (
       <tr>
         <td>{financial}</td>
-        {values.map((value, index) => <td key={index}>${Number(value).toFixed(2)}</td>)}
+        {values.map((value, index) => <td data-positive={value >= 0} key={index}>${numberWithCommas(Number(value).toFixed(0))}</td>)}
       </tr>
     )
   }

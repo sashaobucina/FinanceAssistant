@@ -1,12 +1,11 @@
-import { json } from "body-parser";
 import { performance } from "perf_hooks";
 import YAML from "yaml";
-import { IIncomeStatement } from "./interfaces/financials";
+import { IAnnualCashFlow, IIncomeStatement } from "./interfaces/financials";
 import { ILogger } from "./interfaces/logger";
 import { RequestType } from "./interfaces/requests";
 import { IRawTicker, IRealTimeStockPrice, Ticker } from "./interfaces/symbols";
 import { IRasaConfig } from "./interfaces/training_data";
-import { purifyIncomeStatement } from "./purify";
+import { purifyAnnualCashFlow, purifyIncomeStatement } from "./purify";
 
 export class Requester {
   constructor(
@@ -82,12 +81,37 @@ export class Requester {
       })
     ];
     return Promise.all(promises).then((results: any[]) => {
-      const [jsonData, csvData] = results;
       const t1 = performance.now();
+      const [jsonData, csvData] = results;
       this.logger.log(
         `Took ${(t1 - t0).toFixed(2)} ms to get income statement for ${ticker}`
       );
       return purifyIncomeStatement(ticker, jsonData, csvData);
+    });
+  }
+
+  public getAnnualCashFlow(ticker: string): Promise<IAnnualCashFlow> {
+    const baseUrl = `https://financialmodelingprep.com/api/v2/financials/cash-flow-statement/${ticker}`;
+    const t0 = performance.now();
+    const promises: Array<Promise<any>> = [
+      this.httpRequest({
+        json: true,
+        method: "GET",
+        uri: `${baseUrl}?datatype=json`
+      }),
+      this.httpRequest({
+        json: true,
+        method: "GET",
+        uri: `${baseUrl}?datatype=csv`
+      })
+    ];
+    return Promise.all(promises).then((results: any[]) => {
+      const t1 = performance.now();
+      const [jsonData, csvData] = results;
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(2)} ms to get annual cash flow for ${ticker}`
+      );
+      return purifyAnnualCashFlow(ticker, jsonData, csvData);
     });
   }
 

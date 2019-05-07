@@ -25,5 +25,14 @@
       "what is the income statement for %ticker%",
       "income statment %ticker%"
     ]
+  },
+  {
+    "intent": "annualCashFlow",
+    "sentences": [
+      "annual cash flow for %ticker%",
+      "what is the annual cash flow for %ticker%",
+      "give the annual cash flow for %ticker%",
+      "annual cash flow %ticker%"
+    ]
   }
 ]

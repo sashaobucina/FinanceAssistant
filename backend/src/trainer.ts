@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { DataGenerator } from "./data_generator";
 import { DataLoader } from "./data_loader";
 import { ILogger } from "./interfaces/logger";
@@ -26,11 +27,13 @@ export class RasaTrainer {
     return this.dataLoader.load().then(() => {
       this.logger.log("Sending request to start model training...");
       const trainingData = this.dataGenerator.generateTrainingData();
-      return this.requester
-        .trainModel(trainingData, this.rasaConfig, "default", "financebuddy")
-        .then(() => {
-          this.logger.log("NLP model finished training");
-        });
+      // return this.requester
+      //   .trainModel(trainingData, this.rasaConfig, "default", "financebuddy")
+      //   .then(() => {
+      //     this.logger.log("NLP model finished training");
+      //   });
+      return Promise.resolve();
     });
   }
 }
+/* tslint:enable */

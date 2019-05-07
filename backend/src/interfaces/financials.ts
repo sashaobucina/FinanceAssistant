@@ -15,3 +15,15 @@ export interface IAnnualEntry {
   entries: IYearlyEntry[];
   TTM: number;
 }
+
+/* Annual cash flow interfaces */
+export interface IAnnualCashFlow {
+  csv: string;
+  financials: IAnnualCashFlowEntry[];
+  symbol: string;
+}
+
+export interface IAnnualCashFlowEntry {
+  date: string;
+  financials: { [key: string]: number };
+}

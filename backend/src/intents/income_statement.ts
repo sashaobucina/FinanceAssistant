@@ -1,3 +1,4 @@
+import { failureResponses } from "../chat";
 import { EntityFinder } from "../entity_finder";
 import { IncomeStatementInfo } from "../info/income_statement_info";
 import { IIntentInfo } from "../info/intent_info";
@@ -21,7 +22,11 @@ export class IncomeStatement implements IIntent {
     const ticker = this.entityFinder.extractTicker(entities);
     if (ticker === undefined) {
       return Promise.resolve(
-        new ChatResponse({ error: "Invalid ticker given" }, "NullIntent", false)
+        new ChatResponse(
+          { error: failureResponses.invalidTicker },
+          "NullIntent",
+          false
+        )
       );
     }
     return this.requester

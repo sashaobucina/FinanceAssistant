@@ -1,3 +1,4 @@
+import { failureResponses } from "../chat";
 import { EntityFinder } from "../entity_finder";
 import { IIntentInfo } from "../info/intent_info";
 import { StockPriceInfo } from "../info/stock_price_info";
@@ -24,7 +25,7 @@ export class StockPrice implements IIntent {
     if (ticker === undefined) {
       return Promise.resolve(
         new ChatResponse(
-          { error: "Invalid ticker given", status: 400 },
+          { error: failureResponses.invalidTicker, status: 400 },
           "NullIntent",
           false
         )

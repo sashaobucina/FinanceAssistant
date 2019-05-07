@@ -13,6 +13,8 @@ export const failureResponses = {
   confidenceTooLow: "Sorry, I could not understand your message.",
   connectionIssue:
     "Server may be temporarily down, I could not parse your question at this moment.",
+  invalidTicker:
+    "Invalid company symbol given! Please refer to the 'Symbols' page to get a list of valid symbols",
   noIntentMapping:
     "Sorry, you asked something outside the scope of my knowledge.",
   runtimeErr:

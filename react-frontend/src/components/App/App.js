@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import ChatInput from '../ChatInput/ChatInput';
 import NullIntent from '../../intent_components/NullIntent';
 import EmptyDiv from "../Empty/EmptyDiv";
-import Spinner from '../Spinner/Spinner';
 import { Container } from 'react-bootstrap';
 import About from '../About/About';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -12,16 +13,25 @@ class App extends Component {
 
     this.state = {
       component: null, // TODO: Change to a landing page where user can get info on how to use the chatbot
+      // component: <CompanyRating data={{ rating: 4, ticker: {companyName: 'Scotiabank', symbol: 'G'} }}/>,
+      inputValue: '',
       isLoading: false
     }
 
     /* Bindings */
     this.handleViewChange = this.handleViewChange.bind(this)
     this.addView = this.addView.bind(this)
-    this.showSpinner = this.showSpinner.bind(this)
+    this.onInputChange = this.onInputChange.bind(this)
+    this.processingMessage = this.processingMessage.bind(this)
   }
 
-  showSpinner() {
+  onInputChange(evt) {
+    this.setState({
+      inputValue: evt.target.value
+    })
+  }
+
+  processingMessage() {
     this.setState(() => ({
       component: <EmptyDiv />,
       isLoading: true
@@ -47,19 +57,26 @@ class App extends Component {
   handleViewChange = (intentName, data) => {
     this.addView(intentName, data)
       .then(() => {
-        this.setState({ isLoading: false})
+        this.setState({ isLoading: false, inputValue: '' })
       })
       .catch(() => {
-        this.setState({ isLoading: false})
+        this.setState({ isLoading: false, inputValue: '' })
       })
   }
 
   render() {
-    const { isLoading, component } = this.state
+    const { inputValue, isLoading, component } = this.state
     return (
       <div className="App">
+        <Header />
         <Container>
-          <ChatInput className="chat-input" handleViewChange={this.handleViewChange} showSpinner={this.showSpinner} isLoading={isLoading} />
+          <ChatInput
+            className="chat-input"
+            handleViewChange={this.handleViewChange}
+            processingMessage={this.processingMessage} isLoading={isLoading}
+            inputValue={inputValue}
+            onInputChange={this.onInputChange}
+          />
           <div className="intent-view">
             {component === null ? (
               <About />
@@ -67,8 +84,9 @@ class App extends Component {
               component
             )}
           </div>
-          <Spinner isLoading={isLoading} />
+          {/* <Spinner isLoading={isLoading} /> */}
         </Container>
+        <Footer />
       </div>
     )
   };

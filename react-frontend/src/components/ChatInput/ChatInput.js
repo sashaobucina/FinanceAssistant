@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import axios from "axios";
+import { MDBInput, MDBBtn, MDBIcon, MDBAnimation, MDBBadge } from 'mdbreact';
 
 class ChatInput extends Component {
   constructor(props) {
     super(props)
-    this.chatInput = React.createRef()
 
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
@@ -19,51 +19,53 @@ class ChatInput extends Component {
   }
 
   sendMessage() {
-    if (this.chatInput.current.value.length > 0) {
-      this.props.showSpinner()
+    const { inputValue, handleViewChange, processingMessage } = this.props
+    if (inputValue.length > 0) {
+      processingMessage()
       const url = 'http://localhost:8080/chat'
-      const data = { message: this.chatInput.current.value }
+      const data = { message: inputValue }
       axios.post(url, data).then(res => {
         const { data, intent } = res.data
-        this.chatInput.current.value = ''
-        this.props.handleViewChange(intent, data)
+        handleViewChange(intent, data)
       })
       .catch(err => {
         console.error(err)
-        this.chatInput.current.value = ''
-        this.props.handleViewChange('NullIntent', { error: 'Could not connect to the server', status: 503 })
+        handleViewChange('NullIntent', { error: 'Could not connect to the server', status: 503 })
       })
     }
   }
 
   render() {
-    const { isLoading } = this.props
+    const { isLoading, inputValue, onInputChange } = this.props
     return (
-      <div className="chat-input">
-        <Row>
-          <Col md={{ span: 8, offset: 1 }}>
-            <Form autoComplete="off">
-              <Form.Group controlId="formChatInput">
-                <Form.Label>Ask me about finance!</Form.Label>
-                <Form.Control type="text" ref={this.chatInput} placeholder="Start typing..." onKeyPress={this.handleKeyPress}></Form.Control>
-                <Form.Text className="text-muted">
-                  I'm not always correct, but I am constantly learning.
-                </Form.Text>
-              </Form.Group>
-            </Form>
+      <div className="chat-input mb-4">
+        <div className='chat-badge mb-2'>
+          <MDBBadge color="blue-gradient">
+            FinanceBuddy<MDBIcon className="ml-2" icon="comment" />
+          </MDBBadge>
+        </div>
+        <Row className="border rounded">
+          <Col className="offset-md-1" md={9}>
+            <MDBInput
+              type="text"
+              value={inputValue}
+              label="Ask me about finance!"
+              onChange={evt => onInputChange(evt)}
+              onKeyPress={this.handleKeyPress}
+            />
           </Col>
           <Col md={2}>
-            <Button
-              className="chat-btn"
-              variant="primary"
-              disabled={isLoading}
-              type="submit"
-              onClick={this.sendMessage}>
-                {isLoading ? "Loading...": "Send"}
-            </Button>
+            <MDBBtn className="chat-btn" gradient="blue" disabled={isLoading} onClick={this.sendMessage} >
+              {(!isLoading)
+                ? <MDBIcon className="white-text" far icon="paper-plane" size="lg" />
+                : <MDBAnimation type="heartBeat" infinite>
+                    <MDBIcon className="white-text" icon="ellipsis-h" size="lg" />
+                  </MDBAnimation>
+              }
+            </MDBBtn>
           </Col>
         </Row>
-        <hr />
+        {/* <hr className="chat-divider" /> */}
       </div>
     )
   }

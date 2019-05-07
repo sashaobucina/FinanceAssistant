@@ -1,19 +1,19 @@
 import { failureResponses } from "../chat";
 import { EntityFinder } from "../entity_finder";
-import { CompanyRatingInfo } from "../info/company_rating_info";
+import { AnnualCashFlowInfo } from "../info/annual_cash_flow_info";
 import { IIntentInfo } from "../info/intent_info";
 import { IIntent } from "../intents";
 import { ChatResponse } from "../interfaces/chat_response";
 import { IEntity } from "../interfaces/rasa";
 import { Requester } from "../requester";
 
-export const companyRatingFactory = (
+export const annualCashFlowFactory = (
   requester: Requester,
   entityFinder: EntityFinder
-): IIntent => new CompanyRating(requester, entityFinder);
+): AnnualCashFlow => new AnnualCashFlow(requester, entityFinder);
 
-export class CompanyRating {
-  public readonly info: IIntentInfo = new CompanyRatingInfo();
+export class AnnualCashFlow implements IIntent {
+  public readonly info: IIntentInfo = new AnnualCashFlowInfo();
   constructor(
     private readonly requester: Requester,
     private readonly entityFinder: EntityFinder
@@ -24,20 +24,24 @@ export class CompanyRating {
     if (ticker === undefined) {
       return Promise.resolve(
         new ChatResponse(
-          { error: failureResponses.invalidTicker, status: 400 },
+          { error: failureResponses.invalidTicker },
           "NullIntent",
           false
         )
       );
     }
     return this.requester
-      .getCompanyRating(ticker.symbol)
-      .then(companyRating => {
-        const data = {
-          rating: companyRating.rating,
-          ticker
-        };
-        return new ChatResponse(data, this.info.intent, true);
+      .getAnnualCashFlow(ticker.symbol)
+      .then(annualCashFlow => {
+        return new ChatResponse(
+          {
+            csv: annualCashFlow.csv,
+            financials: annualCashFlow.financials,
+            ticker
+          },
+          this.info.intent,
+          true
+        );
       });
   }
 }

@@ -1,4 +1,7 @@
+import { rejectAttr } from "./helper";
 import {
+  IAnnualCashFlow,
+  IAnnualCashFlowEntry,
   IAnnualEntry,
   IIncomeStatement,
   IYearlyEntry
@@ -16,6 +19,28 @@ export const purifyIncomeStatement = (
   return {
     csv,
     financials: rawFinancials,
+    symbol
+  };
+};
+
+export const purifyAnnualCashFlow = (
+  symbol: string,
+  rawAnnualCashFlow: any,
+  csv: string
+): IAnnualCashFlow => {
+  const filterFn = (e: any) => e !== "date";
+  const annualCashFlow: any[] = rawAnnualCashFlow.financials
+  const dates: string[] = annualCashFlow.map(annualEntry => annualEntry.date);
+  const allFinancials = annualCashFlow.map(annualEntry =>
+    rejectAttr(annualEntry, filterFn)
+  );
+  const entries: IAnnualCashFlowEntry[] = dates.map((date, i) => ({
+    date,
+    financials: allFinancials[i]
+  }));
+  return {
+    csv,
+    financials: entries,
     symbol
   };
 };
