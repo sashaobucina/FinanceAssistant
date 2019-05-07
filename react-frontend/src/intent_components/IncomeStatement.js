@@ -46,6 +46,14 @@ class IncomeStatement extends Component {
         'year3': '2,000.54',
         'year4': '431.34',
         'TTM': '300.21'
+      },
+      {
+        'financial': 'Revenue',
+        'year1': '0.00',
+        'year2': '11.21',
+        'year3': '2,000.54',
+        'year4': '431.34',
+        'TTM': '300.21'
       }
     ]
     return(
@@ -55,13 +63,13 @@ class IncomeStatement extends Component {
             <DownloadButton csv={csv} filename={`IncomeStatement_${ticker.symbol}.csv`} />
           </Col>
         </Row>
-        <Row style={{ marginTop: "10px" }}>
+        <Row className="mt-4">
           <Col md={12}>
             <MDBCard narrow>
-              <MDBCardHeader className="view view-cascade gradient-card-header blue-gradient d-flex justify-content-between align-items-center">
-                <p className="text-white">
+              <MDBCardHeader className="view view-cascade gradient-card-header blue-gradient text-center align-items-center">
+                <h5 className="text-white">
                   {ticker.companyName}'s Annual Income Statement (in millions)
-                </p>
+                </h5>
               </MDBCardHeader>
               <MDBCardBody cascade>
                 <MDBTable btn fixed>

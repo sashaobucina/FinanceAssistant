@@ -31,7 +31,7 @@ class Header extends Component {
             <MDBCollapse isOpen={this.state.collapse1} navbar>
               <MDBNavbarNav style={{ textAlign: "left", marginTop: "15px" }}>
                 <MDBNavItem active>
-                  <p><MDBIcon className="mr-2" icon="home" />About</p>
+                  <p><MDBIcon className="mr-2" icon="home" />Home</p>
                 </MDBNavItem>
                 <MDBNavItem>
                   <p><MDBIcon className="mr-2" icon="chart-line" />Symbols</p>

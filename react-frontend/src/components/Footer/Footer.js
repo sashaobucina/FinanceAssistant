@@ -4,7 +4,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBIcon } from "md
 class Footer extends Component {
   render() {
     return(
-      <footer className="footer">
+      <footer className="footer" style={{ marginTop: "150px" }}>
         <MDBNavbar className="blue-gradient" expand="md" style={{ color: "white" }} scrolling fixed="bottom">
           <MDBNavbarBrand>
             <p className="mt-3" style={{ fontSize: '16px' }}>

@@ -39,7 +39,7 @@ class ChatInput extends Component {
     const { isLoading, inputValue, onInputChange } = this.props
     return (
       <div className="chat-input mb-4">
-        <div className='chat-badge mb-2'>
+        <div className='chat-badge mb-2 text-left'>
           <MDBBadge color="blue-gradient">
             FinanceBuddy<MDBIcon className="ml-2" icon="comment" />
           </MDBBadge>
