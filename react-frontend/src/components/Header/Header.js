@@ -20,7 +20,6 @@ class Header extends Component {
   }
 
   render() {
-    // const container = { height: 1300 }
     return(
       <header>
         <MDBNavbar className="blue-gradient" style={{ color: "white" }} scrolling>
