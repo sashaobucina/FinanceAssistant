@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { MDBDataTable, MDBIcon } from "mdbreact";
+import { MDBDataTable } from "mdbreact";
 
 class SupportedSymbols extends Component {
   constructor(props) {
