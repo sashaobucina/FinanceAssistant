@@ -5,7 +5,7 @@ class SupportedSymbols extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tickers: []
+      tickers: null
     }
   }
 
@@ -17,7 +17,7 @@ class SupportedSymbols extends Component {
 
   render() {
     const { tickers } = this.state
-    if (tickers) {
+    if (tickers === null) {
       return null
     }
     return (
