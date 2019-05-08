@@ -32,11 +32,6 @@ class Footer extends Component {
                 <MDBIcon className="light-blue-text hoverable" fab icon="linkedin-in" size="lg"/>
               </a>
             </MDBNavItem>
-            <MDBNavItem className="mr-3 ml-3">
-              <a href="http://localhost:3000">
-                <MDBIcon className="black-text hoverable" icon="user" size="lg"/>
-              </a>
-            </MDBNavItem>
           </MDBNavbarNav>
         </MDBNavbar>
       </footer>
