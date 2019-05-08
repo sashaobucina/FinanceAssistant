@@ -56,5 +56,16 @@
       "what was the performance of the financials sectors",
       "performance of financial sectors"
     ]
+  },
+  {
+    "intent": "forex",
+    "sentences": [
+      "how is the foreign exchange market doing",
+      "forex",
+      "foreign exchange market",
+      "changes in the forex",
+      "how are the currencies doing",
+      "forex activty"
+    ]
   }
 ]

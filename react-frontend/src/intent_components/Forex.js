@@ -1,30 +1,39 @@
 import React, { Component } from "react";
-import { MDBTable, MDBTableHead, MDBTableBody, MDBCardHeader, MDBCard, MDBCardBody } from "mdbreact";
+import { MDBCard, MDBCardHeader, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody, MDBIcon } from "mdbreact";
 
-class SectorPerformance extends Component {
+class Forex extends Component {
   render() {
-    const { sectorPerformances } = this.props.data;
+    const { forex } = this.props.data;
     const columns = [
       {
-        label: 'Sector',
-        field: 'sector',
-        sort: 'asc'
+        label: 'Foreign Exchanges',
+        field: 'forex'
+      },
+      {
+        label: 'Price',
+        field: 'price'
       },
       {
         label: 'Change',
-        field: 'change'
+        field: 'change',
+        sort: 'asc'
+      },
+      {
+        label: 'Currency',
+        field: 'currency'
       },
     ]
-    const rows = sectorPerformances.map((sectorPerformance, index) => {
-      const { change, name } = sectorPerformance;
-      const changeAsNum = Number(change.replace('%', ''));
-      const changeClassName = changeAsNum >= 0
+    const rows = forex.map((forexInfo, index) => {
+      const { change, currency, exchange, price } = forexInfo;
+      const changeClassName = change >= 0
         ? "fa fa-chevron-up mr-2 fa-lg green-text"
         : "fa fa-chevron-down mr-2 fa-lg red-text"
       const changeElem = [<i key={index} className={changeClassName} aria-hidden={true}></i>, change]
       return {
-        sector: name,
-        change: changeElem
+        forex: exchange,
+        price: price,
+        change: changeElem,
+        currency: currency
       }
     })
     return (
@@ -32,10 +41,11 @@ class SectorPerformance extends Component {
         <MDBCard narrow>
           <MDBCardHeader className="view view-cascade gradient-card-header blue-gradient text-center align-items-center">
             <h5 className="text-white mt-2">
-              Performance of Financial Sectors
+              Foreign Exchange Market (FOREX)
             </h5>
           </MDBCardHeader>
           <MDBCardBody cascade>
+            <MDBIcon icon="" />
             <MDBTable>
               <MDBTableHead columns={columns}/>
               <MDBTableBody rows={rows} />
@@ -47,4 +57,4 @@ class SectorPerformance extends Component {
   }
 }
 
-export default SectorPerformance;
+export default Forex;

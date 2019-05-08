@@ -3,6 +3,7 @@ import {
   IAnnualCashFlow,
   IAnnualCashFlowEntry,
   IAnnualEntry,
+  IForex,
   IIncomeStatement,
   ISector,
   IYearlyEntry
@@ -22,6 +23,19 @@ export const purifyIncomeStatement = (
     financials: rawFinancials,
     symbol
   };
+};
+
+export const purifyForex = (rawForex: any): IForex[] => {
+  return Object.keys(rawForex).map(key => {
+    const forexInfo = rawForex[key];
+    const { Changes, Name, Price, Ticker } = forexInfo;
+    return {
+      change: Changes,
+      currency: Name,
+      exchange: Ticker,
+      price: Price
+    };
+  });
 };
 
 export const purifySectorPerformance = (rawSectors: any): ISector[] => {

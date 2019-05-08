@@ -70,3 +70,11 @@ export interface ISector {
   name: Sector;
   change: string;
 }
+
+/* Forex interfaces */
+export interface IForex {
+  change: number;
+  currency: string;
+  exchange: string;
+  price: number;
+}

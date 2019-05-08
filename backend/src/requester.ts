@@ -3,6 +3,7 @@ import YAML from "yaml";
 import {
   IAnnualCashFlow,
   ICompanyProfile,
+  IForex,
   IIncomeStatement,
   ISector
 } from "./interfaces/financials";
@@ -12,6 +13,7 @@ import { IRawTicker, IRealTimeStockPrice, Ticker } from "./interfaces/symbols";
 import { IRasaConfig } from "./interfaces/training_data";
 import {
   purifyAnnualCashFlow,
+  purifyForex,
   purifyIncomeStatement,
   purifySectorPerformance
 } from "./purify";
@@ -35,6 +37,21 @@ export class Requester {
         `Took ${(t1 - t0).toFixed(2)} ms to get company rating for ${symbol}`
       );
       return result[symbol];
+    });
+  }
+  public getForex(): Promise<IForex[]> {
+    const url = `https://financialmodelingprep.com/api/forex?datatype=json`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then((rawForex: any) => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(2)} ms to get FOREX information`
+      );
+      return purifyForex(rawForex);
     });
   }
 
