@@ -12,7 +12,8 @@ import { Ticker, TickerMapBox } from "./interfaces/symbols";
 import { IRasaConfig, ISentence } from "./interfaces/training_data";
 import { Requester } from "./requester";
 import { trainerFactory } from "./trainer";
-import { RasaVerifier } from "./verifier";
+import { RasaVerifier } from "./verifier";import { symbolsFactory } from "./interfaces/symbols_factory";
+;
 
 const app = express();
 
@@ -58,7 +59,9 @@ trainer.train().then(() => {
       console.log(res);
       const port = 8080;
       logger.log("Ready!");
+      const symbols = symbolsFactory(tickerMapBox);
       const chat = chatFactory(intentMap, requester, verifier, logger);
+      app.get("/symbols/", symbols)
       app.post("/chat/", chat);
       app.listen(port);
       logger.log(`Started listening at port ${port}...`);
