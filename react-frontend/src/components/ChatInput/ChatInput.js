@@ -65,7 +65,6 @@ class ChatInput extends Component {
             </MDBBtn>
           </Col>
         </Row>
-        {/* <hr className="chat-divider" /> */}
       </div>
     )
   }
