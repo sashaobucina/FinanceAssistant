@@ -9,7 +9,6 @@ class AnnualCashFlow extends Component {
     const years = this.extractYears(financials)
     const anyYear = financials[0].financials
     const tableRows = Object.keys(anyYear).map(financialEntry => {
-      console.log(financialEntry)
       const values = this.extractValues(financials, financialEntry)
       return <AnnualCashFlowRow key={financialEntry} financial={financialEntry} values={values} />
     })

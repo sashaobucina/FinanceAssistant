@@ -50,3 +50,23 @@ export interface ICompanyProfile {
   date_cs_filed?: string | null;
   image: string;
 }
+
+/* Sectors interface */
+export type Sector =
+  | "Information Technology"
+  | "Consumer Staples"
+  | "Consumer Discretionary"
+  | "Materials"
+  | "Financials"
+  | "Industrials"
+  | "Real Estate"
+  | "Health Care"
+  | "Telecommunication Services"
+  | "Energy"
+  | "Utilities"
+  | "Communication Services";
+
+export interface ISector {
+  name: Sector;
+  change: string;
+}

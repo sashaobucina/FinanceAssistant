@@ -4,6 +4,7 @@ import {
   IAnnualCashFlowEntry,
   IAnnualEntry,
   IIncomeStatement,
+  ISector,
   IYearlyEntry
 } from "./interfaces/financials";
 
@@ -21,6 +22,16 @@ export const purifyIncomeStatement = (
     financials: rawFinancials,
     symbol
   };
+};
+
+export const purifySectorPerformance = (rawSectors: any): ISector[] => {
+  return Object.keys(rawSectors).map((key: string) => {
+    const rawSector = rawSectors[key];
+    return {
+      change: rawSector.Change,
+      name: rawSector.Name
+    };
+  });
 };
 
 export const purifyAnnualCashFlow = (

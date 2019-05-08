@@ -12,7 +12,6 @@ class Header extends Component {
   }
 
   toggleSingleCollapse(collapseId) {
-    console.log('HERE')
     this.setState({
       ...this.state,
       [collapseId]: !this.state[collapseId]
@@ -22,7 +21,7 @@ class Header extends Component {
   render() {
     return(
       <header>
-        <MDBNavbar className="blue-gradient" style={{ color: "white" }} scrolling>
+        <MDBNavbar className="blue-gradient" style={{ color: "white" }}>
           <MDBNavbarBrand className="ml-1">
             <strong>FinanceBuddy<MDBIcon className="ml-1" icon="hand-holding-usd" /></strong>
           </MDBNavbarBrand>

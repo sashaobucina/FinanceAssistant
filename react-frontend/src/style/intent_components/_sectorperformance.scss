@@ -1,0 +1,8 @@
+span {
+  &[data-positive="true"] {
+    color: green;
+  }
+  &[data-positive="false"] {
+    color: red;
+  }
+}

@@ -10,4 +10,4 @@ class CompanyLogo extends Component {
   }
 }
 
-export default CompanyLogo
+export default CompanyLogo;

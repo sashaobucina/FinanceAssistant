@@ -44,5 +44,17 @@
       "what is the company profile of %ticker%",
       "profile of %ticker%"
     ]
+  },
+  {
+    "intent": "sectorPerformance",
+    "sentences": [
+      "how did the sectors perform",
+      "sector performance",
+      "performance of sectors",
+      "how was the performance of the financial sectors",
+      "financial sector performance",
+      "what was the performance of the financials sectors",
+      "performance of financial sectors"
+    ]
   }
 ]
