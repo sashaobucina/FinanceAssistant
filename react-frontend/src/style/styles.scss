@@ -3,9 +3,11 @@
 @import 'core';
 
 @import 'components/App/app';
+@import 'components/Header/header';
 @import 'components/DownloadButton/downloadbutton';
 @import 'components/ChatInput/chatinput';
 @import 'components/CompanyLogo/companylogo';
+@import 'components/SupportedSymbols/supportedsymbols';
 @import 'components/Footer/footer';
 @import 'intent_components/help';
 @import 'intent_components/nullintent';

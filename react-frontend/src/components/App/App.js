@@ -4,8 +4,6 @@ import NullIntent from '../../intent_components/NullIntent';
 import EmptyDiv from "../Empty/EmptyDiv";
 import { Container } from 'react-bootstrap';
 import About from '../About/About';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -68,7 +66,6 @@ class App extends Component {
     const { inputValue, isLoading, component } = this.state
     return (
       <div className="App">
-        <Header />
         <Container>
           <ChatInput
             className="chat-input"
@@ -84,9 +81,7 @@ class App extends Component {
               component
             )}
           </div>
-          {/* <Spinner isLoading={isLoading} /> */}
         </Container>
-        <Footer />
       </div>
     )
   };

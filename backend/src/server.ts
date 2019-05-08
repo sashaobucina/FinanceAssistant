@@ -59,7 +59,7 @@ trainer.train().then(() => {
       console.log(res);
       const port = 8080;
       logger.log("Ready!");
-      const symbols = symbolsFactory(tickerMapBox);
+      const symbols = symbolsFactory(tickerMapBox, logger);
       const chat = chatFactory(intentMap, requester, verifier, logger);
       app.get("/symbols/", symbols)
       app.post("/chat/", chat);

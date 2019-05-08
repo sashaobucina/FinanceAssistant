@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { MDBNavbar, MDBNavbarBrand, MDBHamburgerToggler, MDBCollapse, MDBNavItem, MDBNavbarNav, MDBIcon } from "mdbreact";
 
 class Header extends Component {
@@ -20,22 +21,30 @@ class Header extends Component {
 
   render() {
     return(
-      <header>
+      <header className="app-header">
         <MDBNavbar className="blue-gradient" style={{ color: "white" }}>
           <MDBNavbarBrand className="ml-1">
-            <strong>Finance Assistant<MDBIcon className="ml-1" icon="hand-holding-usd" /></strong>
+            <Link to="/" className="text-white">
+              <strong>Finance Assistant<MDBIcon className="ml-1" icon="hand-holding-usd" /></strong>
+            </Link>
           </MDBNavbarBrand>
           <MDBHamburgerToggler className="mr-2" id="hamburger1" onClick={() => this.toggleSingleCollapse('collapse1')} />
             <MDBCollapse isOpen={this.state.collapse1} navbar>
               <MDBNavbarNav style={{ textAlign: "left", marginTop: "15px" }}>
                 <MDBNavItem active>
-                  <p><MDBIcon className="mr-2" icon="home" />Home</p>
+                  <Link to="/">
+                    <p><MDBIcon className="mr-2" icon="home" />Home</p>
+                  </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <p><MDBIcon className="mr-2" icon="chart-line" />Valid Symbols</p>
+                  <Link to="/symbols">
+                    <p><MDBIcon className="mr-2" icon="chart-line" />Valid Symbols</p>
+                  </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <p><MDBIcon className="mr-2" icon="info-circle" />Usage</p>
+                  <Link to="/">
+                    <p><MDBIcon className="mr-2" icon="info-circle" />Usage</p>
+                  </Link>
                 </MDBNavItem>
               </MDBNavbarNav>
             </MDBCollapse>
