@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
     return(
       <div className="footer" style={{ marginTop: "150px" }}>
-        <MDBNavbar color="white" expand="md" style={{ color: "#757575", height: "70px" }} fixed="bottom">
+        <MDBNavbar color="white" expand="md" style={{ color: "#757575", height: "65px" }} fixed="bottom">
           <MDBNavbarBrand style={{ textAlign: "center"}}>
             <p className=" mt-3 ml-3" style={{ fontSize: '13px' }}>
               <MDBIcon className="amber-text mr-2" icon="bolt" />

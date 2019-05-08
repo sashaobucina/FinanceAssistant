@@ -42,8 +42,13 @@ class Header extends Component {
                   </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <Link to="/">
-                    <p><MDBIcon className="mr-2" icon="info-circle" />Usage</p>
+                  <Link to="/contact">
+                    <p><MDBIcon className="mr-2" icon="phone" />Contact</p>
+                  </Link>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <Link to="/about">
+                    <p><MDBIcon className="mr-2" icon="question" />About Us</p>
                   </Link>
                 </MDBNavItem>
               </MDBNavbarNav>

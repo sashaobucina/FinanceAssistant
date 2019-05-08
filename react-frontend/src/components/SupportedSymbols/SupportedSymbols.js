@@ -55,9 +55,9 @@ class SupportedSymbols extends Component {
             bordered
             striped
             infoLabel={["Showing", "of", "to", "valid symbols"]}
-            entries={50}
+            entries={25}
             entriesLabel="Show symbols "
-            entriesOptions={[50, 100, 200, 500]}
+            entriesOptions={[25, 50, 100, 500]}
             pagesAmount={10}
             searchLabel="Search"
             theadColor="blue-gradient"

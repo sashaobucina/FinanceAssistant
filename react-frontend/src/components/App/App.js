@@ -10,8 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      component: null, // TODO: Change to a landing page where user can get info on how to use the chatbot
-      // component: <CompanyRating data={{ rating: 4, ticker: {companyName: 'Scotiabank', symbol: 'G'} }}/>,
+      component: null,
       inputValue: '',
       isLoading: false
     }
