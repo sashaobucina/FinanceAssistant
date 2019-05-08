@@ -23,7 +23,7 @@ class Header extends Component {
       <header>
         <MDBNavbar className="blue-gradient" style={{ color: "white" }}>
           <MDBNavbarBrand className="ml-1">
-            <strong>FinanceBuddy<MDBIcon className="ml-1" icon="hand-holding-usd" /></strong>
+            <strong>Finance Assistant<MDBIcon className="ml-1" icon="hand-holding-usd" /></strong>
           </MDBNavbarBrand>
           <MDBHamburgerToggler className="mr-2" id="hamburger1" onClick={() => this.toggleSingleCollapse('collapse1')} />
             <MDBCollapse isOpen={this.state.collapse1} navbar>
@@ -32,7 +32,7 @@ class Header extends Component {
                   <p><MDBIcon className="mr-2" icon="home" />Home</p>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <p><MDBIcon className="mr-2" icon="chart-line" />Symbols</p>
+                  <p><MDBIcon className="mr-2" icon="chart-line" />Valid Symbols</p>
                 </MDBNavItem>
                 <MDBNavItem>
                   <p><MDBIcon className="mr-2" icon="info-circle" />Usage</p>

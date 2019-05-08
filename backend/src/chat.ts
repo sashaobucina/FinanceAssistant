@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { IIntentInfo } from "./info/intent_info";
 import { IIntent } from "./intents";
 import { ChatResponse } from "./interfaces/chat_response";
 import { ILogger } from "./interfaces/logger";
@@ -14,7 +15,7 @@ export const failureResponses = {
   connectionIssue:
     "Server may be temporarily down, I could not parse your question at this moment.",
   invalidTicker:
-    "Invalid company symbol given! Please refer to the 'Symbols' page to get a list of valid symbols",
+    "Invalid company symbol given! Please refer to the 'Valid Symbols' page to get a list of valid symbols",
   noIntentMapping:
     "Sorry, you asked something outside the scope of my knowledge.",
   runtimeErr:
@@ -36,6 +37,11 @@ export const chatFactory = (
         false
       )
     );
+  } else if (question === "help") {
+    const intentInfos: IIntentInfo[] = Object.keys(intentMap).map(
+      intent => intentMap[intent].info
+    );
+    res.send(new ChatResponse({ intentInfos }, "Help", true));
   } else {
     requester
       .parseQuestion(question, "financebuddy")

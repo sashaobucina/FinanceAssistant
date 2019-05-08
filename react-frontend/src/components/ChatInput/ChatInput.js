@@ -41,7 +41,7 @@ class ChatInput extends Component {
       <div className="chat-input mb-4">
         <div className='chat-badge mb-2 text-left'>
           <MDBBadge color="blue-gradient">
-            FinanceBuddy<MDBIcon className="ml-2" icon="comment" />
+            Finance Assistant<MDBIcon className="ml-2" icon="comment" />
           </MDBBadge>
         </div>
         <Row className="border rounded">

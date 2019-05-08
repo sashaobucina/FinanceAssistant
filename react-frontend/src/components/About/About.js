@@ -7,7 +7,7 @@ class About extends Component {
       <Row>
         <Col md={{ span: 10, offset: 1 }}>
           <div className="about">
-            <p>TODO: Add About page on landing!!!</p>
+            <p>Type "<samp>help</samp>" to get started!</p>
           </div>
         </Col>
       </Row>

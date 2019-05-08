@@ -7,11 +7,11 @@ class Footer extends Component {
       <footer className="footer" style={{ marginTop: "150px" }}>
         <MDBNavbar color="white" expand="md" style={{ color: "#757575" }} fixed="bottom">
           <MDBNavbarBrand>
-            <p className=" mt-3 ml-3" style={{ fontSize: '16px' }}>
+            <p className=" mt-3 ml-3" style={{ fontSize: '13px' }}>
               <MDBIcon className="amber-text mr-2" icon="bolt" />
               Powered by FinancialModelingPrep API
             </p>
-            <p className="ml-3" style={{ fontSize: '14px' }}>
+            <p className="text-muted ml-3" style={{ fontSize: '11px' }}>
               &copy; {new Date().getFullYear()} Copyright: Sasha Obucina
             </p>
           </MDBNavbarBrand>
