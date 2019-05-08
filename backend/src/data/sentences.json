@@ -34,5 +34,15 @@
       "give the annual cash flow for %ticker%",
       "annual cash flow %ticker%"
     ]
+  },
+  {
+    "intent": "companyProfile",
+    "sentences": [
+      "show details of %ticker%",
+      "overview of %ticker%",
+      "company profile of %ticker%",
+      "what is the company profile of %ticker%",
+      "profile of %ticker%"
+    ]
   }
 ]

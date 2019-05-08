@@ -27,3 +27,26 @@ export interface IAnnualCashFlowEntry {
   date: string;
   financials: { [key: string]: number };
 }
+
+/* Company profile interfaces */
+export interface ICompanyProfile {
+  Price: number;
+  Beta: string;
+  VolAvg: string;
+  MktCap: string;
+  LastDiv: string;
+  Range: string;
+  Changes: number;
+  ChangesPerc: string;
+  companyName: string;
+  exchange: string;
+  industry: string;
+  website: string;
+  description: string;
+  CEO: string;
+  sector: string;
+  date_is_filed?: string | null;
+  date_bs_filed?: string | null;
+  date_cs_filed?: string | null;
+  image: string;
+}

@@ -48,12 +48,12 @@ class IncomeStatement extends Component {
         'TTM': '300.21'
       },
       {
-        'financial': 'Revenue',
-        'year1': '0.00',
-        'year2': '11.21',
-        'year3': '2,000.54',
-        'year4': '431.34',
-        'TTM': '300.21'
+        '0': 'Net Income',
+        '1': '0.00',
+        '2': '11.21',
+        '3': '2,000.54',
+        '4': '431.34',
+        '5': '300.21'
       }
     ]
     return(

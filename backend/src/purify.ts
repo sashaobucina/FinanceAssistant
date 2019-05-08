@@ -29,7 +29,7 @@ export const purifyAnnualCashFlow = (
   csv: string
 ): IAnnualCashFlow => {
   const filterFn = (e: any) => e !== "date";
-  const annualCashFlow: any[] = rawAnnualCashFlow.financials
+  const annualCashFlow: any[] = rawAnnualCashFlow.financials;
   const dates: string[] = annualCashFlow.map(annualEntry => annualEntry.date);
   const allFinancials = annualCashFlow.map(annualEntry =>
     rejectAttr(annualEntry, filterFn)
