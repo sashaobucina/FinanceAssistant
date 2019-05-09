@@ -11,6 +11,7 @@ import { stockPriceFactory } from "./intents/stock_price";
 import { ChatResponse } from "./interfaces/chat_response";
 import { IEntity } from "./interfaces/rasa";
 import { Requester } from "./requester";
+import { historicalStockPricesFactory } from "./intents/historical_stock_prices";
 
 export const intents = (
   requester: Requester,
@@ -20,6 +21,7 @@ export const intents = (
   const companyProfile = companyProfileFactory(requester, entityFinder);
   const companyRating = companyRatingFactory(requester, entityFinder);
   const forex = forexFactory(requester);
+  const historicalStockPrices = historicalStockPricesFactory(requester, entityFinder);
   const incomeStatement = incomeStatementFactory(requester, entityFinder);
   const majorIndexes = majorIndexesFactory(requester);
   const sectorPerformance = sectorPerformanceFactory(requester);
@@ -30,6 +32,7 @@ export const intents = (
     companyRating,
     forex,
     incomeStatement,
+    historicalStockPrices,
     majorIndexes,
     sectorPerformance,
     stockPrice
