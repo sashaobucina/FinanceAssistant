@@ -100,7 +100,7 @@ export interface IHistoricalStockPrice {
   change: number;
   changePercent: number;
   vwap: number;
-  label: number;
+  label: string;
   changeOverTime: number;
 }
 
