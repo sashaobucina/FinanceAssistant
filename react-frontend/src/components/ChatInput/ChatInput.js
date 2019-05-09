@@ -7,14 +7,21 @@ class ChatInput extends Component {
   constructor(props) {
     super(props)
 
-    this.handleKeyPress = this.handleKeyPress.bind(this)
-    this.sendMessage = this.sendMessage.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   handleKeyPress(e) {
-    if (e.charCode === 13) {
-      e.preventDefault()
-      this.sendMessage()
+    const { onDownArrow, onUpArrow } = this.props;
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      this.sendMessage();
+    } else if (e.keyCode === 38) {
+      e.preventDefault();
+      onUpArrow();
+    } else if (e.keyCode === 40) {
+      e.preventDefault();
+      onDownArrow();
     }
   }
 
@@ -26,17 +33,17 @@ class ChatInput extends Component {
       const data = { message: inputValue }
       axios.post(url, data).then(res => {
         const { data, intent } = res.data
-        handleViewChange(intent, data)
+        handleViewChange(data, intent, inputValue)
       })
       .catch(err => {
         console.error(err)
-        handleViewChange('NullIntent', { error: 'Could not connect to the server', status: 503 })
+        handleViewChange({ error: 'Could not connect to the server', status: 503 }, 'NullIntent', inputValue)
       })
     }
   }
 
   render() {
-    const { isLoading, inputValue, onInputChange } = this.props
+    const { isLoading, inputValue, onInputChange } = this.props;
     return (
       <div className="chat-input mb-4">
         <div className='chat-badge mb-2 text-left'>
@@ -51,7 +58,7 @@ class ChatInput extends Component {
               value={inputValue}
               label="Ask me about finance!"
               onChange={evt => onInputChange(evt)}
-              onKeyPress={this.handleKeyPress}
+              onKeyDown={this.handleKeyPress}
             />
           </Col>
           <Col md={2}>
