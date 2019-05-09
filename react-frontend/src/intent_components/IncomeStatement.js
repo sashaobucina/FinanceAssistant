@@ -3,7 +3,6 @@ import { Row, Col } from "react-bootstrap";
 import DownloadButton from "../components/DownloadButton/DownloadButton";
 import { numberWithCommas } from "../helper";
 import { MDBTable, MDBTableHead, MDBTableBody, MDBCard, MDBCardHeader, MDBCardBody } from "mdbreact";
-import EmptyDiv from "../components/Empty/EmptyDiv";
 
 class IncomeStatement extends Component {
   render() {

@@ -9,7 +9,15 @@ class Header extends Component {
       collapse1: false,
       collapseID: ''
     }
+    this.minimizeHamburger = this.minimizeHamburger.bind(this)
     this.toggleSingleCollapse = this.toggleSingleCollapse.bind(this)
+  }
+
+  minimizeHamburger(collapseId) {
+    this.setState({
+      ...this.state,
+      [collapseId]: false
+    })
   }
 
   toggleSingleCollapse(collapseId) {
@@ -32,22 +40,22 @@ class Header extends Component {
             <MDBCollapse isOpen={this.state.collapse1} navbar>
               <MDBNavbarNav style={{ textAlign: "left", marginTop: "15px" }}>
                 <MDBNavItem active>
-                  <Link to="/">
+                  <Link to="/" onClick={() => this.minimizeHamburger('collapse1')}>
                     <p><MDBIcon className="mr-2" icon="home" />Home</p>
                   </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <Link to="/symbols">
+                  <Link to="/symbols" onClick={() => this.minimizeHamburger('collapse1')}>
                     <p><MDBIcon className="mr-2" icon="chart-line" />Valid Symbols</p>
                   </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <Link to="/contact">
+                  <Link to="/contact" onClick={() => this.minimizeHamburger('collapse1')}>
                     <p><MDBIcon className="mr-2" icon="phone" />Contact</p>
                   </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <Link to="/about">
+                  <Link to="/about" onClick={() => this.minimizeHamburger('collapse1')}>
                     <p><MDBIcon className="mr-2" icon="question" />About Us</p>
                   </Link>
                 </MDBNavItem>
