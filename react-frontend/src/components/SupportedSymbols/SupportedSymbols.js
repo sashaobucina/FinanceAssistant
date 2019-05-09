@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { MDBDataTable, MDBBtn, MDBIcon, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import axios from "axios";
-import { MDBDataTable } from "mdbreact";
 
 class SupportedSymbols extends Component {
   constructor(props) {
@@ -66,6 +67,20 @@ class SupportedSymbols extends Component {
             theadColor="blue-gradient"
             data={data}
           />
+          <MDBContainer>
+            <MDBRow>
+              <MDBCol className="offset-md-4" md="4">
+                <p className="text-muted mt-1">
+                  Go back to the home page
+                  <Link to="/">
+                    <MDBBtn className="blue-gradient ml-4" size="sm">
+                      Home<MDBIcon className="ml-2" icon="home"></MDBIcon>
+                    </MDBBtn>
+                  </Link>
+                </p>
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
         </div>
       )
     }
