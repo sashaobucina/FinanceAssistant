@@ -1,15 +1,17 @@
 import { DataLoader } from "./data_loader";
 import { ILogger } from "./interfaces/logger";
+import { ITrainer } from "./interfaces/training_data";
 
 export const initializerFactory = (
   dataLoader: DataLoader,
+  trainer: ITrainer,
   cron: any,
   logger: ILogger,
   initializeServer: () => void
 ) =>
   new Initializer(
     cron,
-    dataLoader,
+    trainer,
     cronJobFactory(dataLoader, logger),
     initializeServer
   );
@@ -17,14 +19,14 @@ export const initializerFactory = (
 export class Initializer {
   constructor(
     private readonly cron: any,
-    private readonly dataLoader: DataLoader,
+    private readonly trainer: ITrainer,
     private readonly cronJob: () => Promise<void>,
     private readonly initializeServer: () => void
   ) {}
 
   public initialize(): Promise<void> {
     this.cron.job("00 00 06 * * 1-7", this.cronJob).start();
-    return this.dataLoader.load().then(this.initializeServer);
+    return this.trainer.train().then(this.initializeServer);
   }
 }
 

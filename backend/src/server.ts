@@ -71,4 +71,4 @@ export const initializeServer = (): void => {
 };
 
 // Starting the app
-initializerFactory(dataLoader, cron, logger, initializeServer).initialize();
+initializerFactory(dataLoader, trainer, cron, logger, initializeServer).initialize();
