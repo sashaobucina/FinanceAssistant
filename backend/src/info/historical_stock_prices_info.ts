@@ -12,7 +12,7 @@ export class HistoricalStockPricesInfo implements IIntentInfo {
     this.shortDescription = "";
     this.longDescription = "";
     this.entity = "ticker";
-    this.intent = "HistoricalStockPrices";
+    this.intent = "HistoricalStockPrice";
     this.sampleUsages = [""];
   }
 }

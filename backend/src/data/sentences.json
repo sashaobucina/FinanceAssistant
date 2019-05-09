@@ -79,5 +79,16 @@
       "stock market activity",
       "changes in the stock markets"
     ]
+  },
+  {
+    "intent": "historicalStockPrices",
+    "sentences": [
+      "show the historical stock price of %ticker%",
+      "historical stock price of %ticker%",
+      "what is the historical stock price of %ticker%",
+      "historical stock price %ticker%",
+      "tell me the historical stock price of %ticker%",
+      "show historical stock price %ticker%"
+    ]
   }
 ]
