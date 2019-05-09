@@ -25,7 +25,7 @@ export class Initializer {
   ) {}
 
   public initialize(): Promise<void> {
-    this.cron.job("00 00 06 * * 1-7", this.cronJob).start();
+    this.cron.job("00 00 06 * * 1-5", this.cronJob).start();
     return this.trainer.train().then(this.initializeServer);
   }
 }
