@@ -23,7 +23,6 @@ class SupportedSymbols extends Component {
       return null
     } else {
       const tickers = tickerData.tickers
-      console.log(tickers)
       const columns = [
         {
           label: "Company",

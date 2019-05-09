@@ -11,9 +11,9 @@ class Contact extends Component {
             <MDBCol className="offset-md-2" md="8">
               <MDBCard>
                 <MDBCardTitle className="blue-gradient">
-                  <h3 className="m-4 white-text ">
+                  <div className="m-4 white-text">
                     Contact Us
-                  </h3>
+                  </div>
                 </MDBCardTitle>
                 <MDBCardBody>
                   <MDBRow>
