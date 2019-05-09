@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBCard, MDBCardHeader, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody, MDBIcon } from "mdbreact";
+import { MDBCard, MDBCardHeader, MDBCardBody, MDBTable, MDBTableHead, MDBTableBody } from "mdbreact";
 
 class Forex extends Component {
   render() {
@@ -45,7 +45,6 @@ class Forex extends Component {
             </h5>
           </MDBCardHeader>
           <MDBCardBody cascade>
-            <MDBIcon icon="" />
             <MDBTable>
               <MDBTableHead columns={columns}/>
               <MDBTableBody rows={rows} />

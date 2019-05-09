@@ -4,6 +4,7 @@ import cashFlowImg from "../static/images/cash-flow.jpg";
 import cardImg from "../static/images/fintech.jpg";
 import incomeImg from "../static/images/income-statement.jpg";
 import forexImg from "../static/images/forex.jpg";
+import indexImg from "../static/images/index.jpg";
 import overviewImg from "../static/images/overview.jpg"
 import sectorImg from "../static/images/sector.jpg";
 import stockImg from "../static/images/stock-price.jpg";
@@ -15,6 +16,7 @@ class Help extends Component {
       case "CompanyProfile": return overviewImg;
       case "IncomeStatement": return incomeImg;
       case "Forex": return forexImg;
+      case "MajorIndexes": return indexImg;
       case "SectorPerformance": return sectorImg;
       case "StockPrice": return stockImg;
       default: return cardImg;
