@@ -5,3 +5,6 @@ Use natural language to ask the Finance Assistant questions about the financial 
 - "What is the income statement for GOOGL?"
 - "How is the FOREX doing?"
 - "What is stock price for AAPL?"
+
+## Demo
+![](res/demo.gif)
