@@ -44,7 +44,7 @@ export const chatFactory = (
     res.send(new ChatResponse({ intentInfos }, "Help", true));
   } else {
     requester
-      .parseQuestion(question, "financebuddy")
+      .parseQuestion(question, "financeassistant")
       .then((rawResponse: IRasaResponse) => {
         const nlpResponse = new RasaNormalizer(
           rawResponse,
