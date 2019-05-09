@@ -48,6 +48,8 @@
   {
     "intent": "sectorPerformance",
     "sentences": [
+      "how are the sectors performing",
+      "how are the financial sectors performing",
       "how did the sectors perform",
       "sector performance",
       "performance of sectors",
@@ -61,6 +63,7 @@
     "intent": "forex",
     "sentences": [
       "how is the foreign exchange market doing",
+      "how is the forex doing",
       "forex",
       "foreign exchange market",
       "changes in the forex",
