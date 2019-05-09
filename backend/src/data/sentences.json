@@ -67,5 +67,17 @@
       "how are the currencies doing",
       "forex activty"
     ]
+  },
+  {
+    "intent": "majorIndexes",
+    "sentences": [
+      "major indexes",
+      "how are the major indexes doing",
+      "how are the stock markets doing",
+      "stock market performance",
+      "changes in the major indexes",
+      "stock market activity",
+      "changes in the stock markets"
+    ]
   }
 ]

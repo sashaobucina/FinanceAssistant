@@ -5,6 +5,7 @@ import {
   IAnnualEntry,
   IForex,
   IIncomeStatement,
+  IMajorIndex,
   ISector,
   IYearlyEntry
 } from "./interfaces/financials";
@@ -34,6 +35,20 @@ export const purifyForex = (rawForex: any): IForex[] => {
       currency: Name,
       exchange: Ticker,
       price: Price
+    };
+  });
+};
+
+export const purifyMajorIndexes = (rawMajorIndexes: any): IMajorIndex[] => {
+  return Object.keys(rawMajorIndexes).map(key => {
+    const majorIndex = rawMajorIndexes[key];
+    const { Changes, Name, Price, Ticker, updated_at } = majorIndex;
+    return {
+      change: Changes,
+      index: Ticker,
+      name: Name,
+      price: Price,
+      updateDate: updated_at
     };
   });
 };

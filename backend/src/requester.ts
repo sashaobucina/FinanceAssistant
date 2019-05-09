@@ -5,6 +5,7 @@ import {
   ICompanyProfile,
   IForex,
   IIncomeStatement,
+  IMajorIndex,
   ISector
 } from "./interfaces/financials";
 import { ILogger } from "./interfaces/logger";
@@ -15,6 +16,7 @@ import {
   purifyAnnualCashFlow,
   purifyForex,
   purifyIncomeStatement,
+  purifyMajorIndexes,
   purifySectorPerformance
 } from "./purify";
 
@@ -70,6 +72,22 @@ export class Requester {
         )} ms to get real time stock price for ${symbol.toUpperCase()}`
       );
       return result;
+    });
+  }
+
+  public getMajorIndexes(): Promise<IMajorIndex[]> {
+    const url = `https://financialmodelingprep.com/api/majors-indexes?datatype=json`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then((majorIndexes: any) => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(2)} ms to get major indexes changes`
+      );
+      return purifyMajorIndexes(majorIndexes);
     });
   }
 

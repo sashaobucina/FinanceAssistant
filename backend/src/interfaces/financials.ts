@@ -78,3 +78,12 @@ export interface IForex {
   exchange: string;
   price: number;
 }
+
+/* Major Index interfaces */
+export interface IMajorIndex {
+  change: number;
+  index: string;
+  name: string;
+  price: number;
+  updateDate: string;
+}

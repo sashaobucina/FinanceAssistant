@@ -5,6 +5,7 @@ import { companyProfileFactory } from "./intents/company_profile";
 import { companyRatingFactory } from "./intents/company_rating";
 import { forexFactory } from "./intents/forex";
 import { incomeStatementFactory } from "./intents/income_statement";
+import { majorIndexesFactory } from "./intents/major_indexes";
 import { sectorPerformanceFactory } from "./intents/sector_performance";
 import { stockPriceFactory } from "./intents/stock_price";
 import { ChatResponse } from "./interfaces/chat_response";
@@ -20,6 +21,7 @@ export const intents = (
   const companyRating = companyRatingFactory(requester, entityFinder);
   const forex = forexFactory(requester);
   const incomeStatement = incomeStatementFactory(requester, entityFinder);
+  const majorIndexes = majorIndexesFactory(requester);
   const sectorPerformance = sectorPerformanceFactory(requester);
   const stockPrice = stockPriceFactory(requester, entityFinder);
   return {
@@ -28,6 +30,7 @@ export const intents = (
     companyRating,
     forex,
     incomeStatement,
+    majorIndexes,
     sectorPerformance,
     stockPrice
   };

@@ -9,11 +9,11 @@ import { EntityFinder } from "./entity_finder";
 import { IIntentMap, intents } from "./intents";
 import { ILogger } from "./interfaces/logger";
 import { Ticker, TickerMapBox } from "./interfaces/symbols";
+import { symbolsFactory } from "./interfaces/symbols_factory";
 import { IRasaConfig, ISentence } from "./interfaces/training_data";
 import { Requester } from "./requester";
 import { trainerFactory } from "./trainer";
-import { RasaVerifier } from "./verifier";import { symbolsFactory } from "./interfaces/symbols_factory";
-;
+import { RasaVerifier } from "./verifier";
 
 const app = express();
 
@@ -61,7 +61,7 @@ trainer.train().then(() => {
       logger.log("Ready!");
       const symbols = symbolsFactory(tickerMapBox, logger);
       const chat = chatFactory(intentMap, requester, verifier, logger);
-      app.get("/symbols/", symbols)
+      app.get("/symbols/", symbols);
       app.post("/chat/", chat);
       app.listen(port);
       logger.log(`Started listening at port ${port}...`);

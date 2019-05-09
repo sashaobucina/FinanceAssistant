@@ -5,9 +5,8 @@ export const rejectAttr = (obj: any, filterFn: (e: any) => any): any => {
     .reduce((res, o) => ({ ...res, ...o }), {});
 };
 
-
 export function mapToObj<K, V>(map: Map<K, V>): any {
-  let obj: any = {};
-  map.forEach((v, k) => obj[k] = v);
+  const obj: any = {};
+  map.forEach((v, k) => (obj[k] = v));
   return obj;
 }
