@@ -19,7 +19,7 @@ class Contact extends Component {
                   <MDBRow>
                     <MDBCol md="4">
                       <MDBIcon className="blue-text mb-3" icon="phone" size="2x" />
-                      <p className="text-muted">(+1) 416-621-2257</p>
+                      <p className="text-muted">(+1) 416-000-0000</p>
                     </MDBCol>
                     <MDBCol md="4">
                       <MDBIcon className="blue-text mb-3" icon="envelope" size="2x" />
