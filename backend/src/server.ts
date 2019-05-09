@@ -1,4 +1,5 @@
 import bodyParser from "body-parser";
+import cron from "cron";
 import express from "express";
 import requestPromise from "request-promise-native";
 import { chatFactory } from "./chat";
@@ -6,6 +7,7 @@ import { cors } from "./cors";
 import { dataGeneratorFactory } from "./data_generator";
 import { DataLoader } from "./data_loader";
 import { EntityFinder } from "./entity_finder";
+import { initializerFactory } from "./initializer";
 import { IIntentMap, intents } from "./intents";
 import { ILogger } from "./interfaces/logger";
 import { Ticker, TickerMapBox } from "./interfaces/symbols";
@@ -48,8 +50,8 @@ const trainer = trainerFactory(
   logger
 );
 
-// Starting the app
-trainer.train().then(() => {
+// Define startup behaviour after training has finished
+export const initializeServer = (): void => {
   logger.log(
     "Sending initial parse request to model to load model into memory"
   );
@@ -66,4 +68,7 @@ trainer.train().then(() => {
       app.listen(port);
       logger.log(`Started listening at port ${port}...`);
     });
-});
+};
+
+// Starting the app
+initializerFactory(dataLoader, cron, logger, initializeServer).initialize();

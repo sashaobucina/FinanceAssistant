@@ -26,11 +26,13 @@
     "typescript": "^3.4.4"
   },
   "dependencies": {
+    "@types/cron": "^1.7.0",
     "@types/express": "^4.16.1",
     "@types/request-promise-native": "^1.0.15",
     "@types/yaml": "^1.0.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cron": "^1.7.1",
     "express": "^4.16.4",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
