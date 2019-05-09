@@ -1,5 +1,5 @@
 {
-  "name": "statement-extractor",
+  "name": "finance-assistant",
   "version": "1.0.0",
   "description": "A web service that does financial analysis and summaries.",
   "main": "src/server.ts",
