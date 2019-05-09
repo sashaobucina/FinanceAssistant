@@ -4,8 +4,10 @@ import {
   IAnnualCashFlow,
   ICompanyProfile,
   IForex,
+  IHistoricalStockPrice,
   IIncomeStatement,
   IMajorIndex,
+  IRawHistoricalPrices,
   ISector
 } from "./interfaces/financials";
 import { ILogger } from "./interfaces/logger";
@@ -15,6 +17,7 @@ import { IRasaConfig } from "./interfaces/training_data";
 import {
   purifyAnnualCashFlow,
   purifyForex,
+  purifyHistoricalPrices,
   purifyIncomeStatement,
   purifyMajorIndexes,
   purifySectorPerformance
@@ -188,6 +191,26 @@ export class Requester {
         `Took ${(t1 - t0).toFixed(2)} ms to get sector performance`
       );
       return purifySectorPerformance(rawSectors);
+    });
+  }
+
+  public getHistoricalStockPrice(
+    symbol: string
+  ): Promise<IHistoricalStockPrice[]> {
+    const url = `https://financialmodelingprep.com/api/v2/historical-price-full/${symbol}?datatype=json`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then((historicalPrices: IRawHistoricalPrices) => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(
+          2
+        )} ms to get historical stock prices for ${symbol}`
+      );
+      return purifyHistoricalPrices(historicalPrices);
     });
   }
 

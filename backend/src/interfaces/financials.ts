@@ -87,3 +87,24 @@ export interface IMajorIndex {
   price: number;
   updateDate: string;
 }
+
+/* Historical Stock Prices interfaces */
+export interface IHistoricalStockPrice {
+  date: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+  unadjustedVolume: number;
+  change: number;
+  changePercent: number;
+  vwap: number;
+  label: number;
+  changeOverTime: number;
+}
+
+export interface IRawHistoricalPrices {
+  name: string;
+  historical: IHistoricalStockPrice[];
+}

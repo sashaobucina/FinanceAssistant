@@ -4,8 +4,10 @@ import {
   IAnnualCashFlowEntry,
   IAnnualEntry,
   IForex,
+  IHistoricalStockPrice,
   IIncomeStatement,
   IMajorIndex,
+  IRawHistoricalPrices,
   ISector,
   IYearlyEntry
 } from "./interfaces/financials";
@@ -62,6 +64,10 @@ export const purifySectorPerformance = (rawSectors: any): ISector[] => {
     };
   });
 };
+
+export const purifyHistoricalPrices = (
+  rawHistoricalPrices: IRawHistoricalPrices
+): IHistoricalStockPrice[] => rawHistoricalPrices.historical;
 
 export const purifyAnnualCashFlow = (
   symbol: string,
