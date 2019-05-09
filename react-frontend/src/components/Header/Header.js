@@ -50,13 +50,13 @@ class Header extends Component {
                   </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <Link to="/contact" onClick={() => this.minimizeHamburger('collapse1')}>
-                    <p><MDBIcon className="mr-2" icon="phone" />Contact</p>
+                  <Link to="/about" onClick={() => this.minimizeHamburger('collapse1')}>
+                    <p><MDBIcon className="mr-2" icon="question" />About Us</p>
                   </Link>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <Link to="/about" onClick={() => this.minimizeHamburger('collapse1')}>
-                    <p><MDBIcon className="mr-2" icon="question" />About Us</p>
+                  <Link to="/contact" onClick={() => this.minimizeHamburger('collapse1')}>
+                    <p><MDBIcon className="mr-2" icon="phone" />Contact</p>
                   </Link>
                 </MDBNavItem>
               </MDBNavbarNav>
