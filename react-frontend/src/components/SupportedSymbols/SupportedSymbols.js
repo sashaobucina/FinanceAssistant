@@ -51,6 +51,9 @@ class SupportedSymbols extends Component {
       }
       return (
         <div className="supported-symbols mt-5 ml-5 mr-5">
+          <h5 className="supported-companies-title text-muted">
+            Supported Companies
+          </h5>
           <MDBDataTable
             bordered
             striped

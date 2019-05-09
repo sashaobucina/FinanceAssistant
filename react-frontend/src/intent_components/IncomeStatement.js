@@ -58,12 +58,7 @@ class IncomeStatement extends Component {
     ]
     return(
       <>
-        <Row style={{ textAlign: "center" }}>
-          <Col md={12}>
-            <DownloadButton csv={csv} filename={`IncomeStatement_${ticker.symbol}.csv`} />
-          </Col>
-        </Row>
-        <Row className="mt-4">
+        <Row className="mb-4">
           <Col md={12}>
             <MDBCard narrow>
               <MDBCardHeader className="view view-cascade gradient-card-header blue-gradient text-center align-items-center">
@@ -78,6 +73,11 @@ class IncomeStatement extends Component {
                 </MDBTable>
               </MDBCardBody>
             </MDBCard>
+          </Col>
+        </Row>
+        <Row style={{ textAlign: "center" }}>
+          <Col md={12}>
+            <DownloadButton csv={csv} filename={`IncomeStatement_${ticker.symbol}.csv`} />
           </Col>
         </Row>
       </>
