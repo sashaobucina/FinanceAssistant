@@ -39,7 +39,7 @@ class AboutUs extends Component {
             <MDBCol md="3">
               <p className="text-muted">
                 Any suggestions?
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/sashaobucina">
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/sashaobucina/FinanceAssistant/issues">
                   <MDBBtn outline gradient="blue" className="white-text ml-3" size="sm">
                     <MDBIcon fab icon="github" className="mr-2" />Github issues
                   </MDBBtn>
