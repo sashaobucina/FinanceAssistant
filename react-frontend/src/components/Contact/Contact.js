@@ -37,7 +37,7 @@ class Contact extends Component {
           <MDBRow>
             <MDBCol>
               <p className="text-muted mt-5">
-                The Finance Assistant is backed by a one-man team, so response may be delayed...
+                The Finance Assistant is backed by a one-man team, so responses may be delayed...
               </p>
             </MDBCol>
           </MDBRow>
