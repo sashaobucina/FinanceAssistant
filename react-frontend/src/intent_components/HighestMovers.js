@@ -4,13 +4,10 @@ import { MDBTable, MDBCard, MDBCardBody, MDBTableHead, MDBTableBody, MDBIcon, MD
 class HighestMovers extends Component {
   render() {
     const { data, direction } = this.props;
-    const directionIcon = direction === 'up'
-      ? "fa fa-chevron-up mr-2 fa-lg green-text"
-      : "fa fa-chevron-down mr-2 fa-lg red-text"
     const title = direction === "up" ? "Highest Gainers" : "Biggest Losers"
     const icon = direction === "up"
-      ? <MDBIcon className="white-text ml-2" icon="sort-amount-up" size="lg" />
-      : <MDBIcon className="white-text ml-2" icon="sort-amount-down" size="lg" />
+      ? <MDBIcon className="green-text ml-2" icon="sort-amount-up" size="lg" />
+      : <MDBIcon className="red-text ml-2" icon="sort-amount-down" size="lg" />
     const columns = [
       {
         label: 'Company Name',
@@ -36,12 +33,11 @@ class HighestMovers extends Component {
     console.log(data)
     const rows = data.map((elem, index) => {
       const { changes, changesPerc, companyName, price, ticker } = elem;
-      const changeElem = [<i key={index} className={directionIcon} aria-hidden={true}></i>, changes];
       return {
         companyName,
         ticker,
         price: `$${Number(price).toFixed(2)}`,
-        changes: changeElem,
+        changes,
         changesPerc: `${Number(changesPerc).toFixed(4)}%`
       }
     });
