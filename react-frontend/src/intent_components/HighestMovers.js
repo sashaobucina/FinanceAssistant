@@ -6,8 +6,8 @@ class HighestMovers extends Component {
     const { data, direction } = this.props;
     const title = direction === "up" ? "Highest Gainers" : "Biggest Losers"
     const icon = direction === "up"
-      ? <MDBIcon className="green-text ml-2" icon="sort-amount-up" size="lg" />
-      : <MDBIcon className="red-text ml-2" icon="sort-amount-down" size="lg" />
+      ? <MDBIcon className="green-text ml-2" icon="sort-amount-up" size="2x" />
+      : <MDBIcon className="red-text ml-2" icon="sort-amount-down" size="2x" />
     const columns = [
       {
         label: 'Company Name',
