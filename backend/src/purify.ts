@@ -3,6 +3,7 @@ import {
   IAnnualCashFlow,
   IAnnualCashFlowEntry,
   IAnnualEntry,
+  ICrypto,
   IForex,
   IHighestMover,
   IHistoricalStockPrice,
@@ -72,6 +73,16 @@ export const purifyHighestMovers = (highestMovers: any): IHighestMover[] =>
 export const purifyHistoricalPrices = (
   rawHistoricalPrices: IRawHistoricalPrices
 ): IHistoricalStockPrice[] => rawHistoricalPrices.historical;
+
+export const purifyCryptos = (rawCryptos: any): ICrypto[] => {
+  return Object.values(rawCryptos).map((rawCrypto: any) => ({
+    changes: rawCrypto.Changes,
+    marketCapUsd: rawCrypto.market_cap_usd,
+    name: rawCrypto.name,
+    price: rawCrypto.Price,
+    ticker: rawCrypto.Ticker
+  }));
+};
 
 export const purifyAnnualCashFlow = (
   symbol: string,

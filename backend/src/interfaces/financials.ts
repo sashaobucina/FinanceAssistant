@@ -119,3 +119,12 @@ export interface IHighestMover {
 }
 
 export type MoverType = "gainers" | "losers";
+
+/* Crytocurrency interfaces */
+export interface ICrypto {
+  changes: number;
+  marketCapUsd: number;
+  name: string;
+  price: number;
+  ticker: string;
+}

@@ -3,6 +3,7 @@ import YAML from "yaml";
 import {
   IAnnualCashFlow,
   ICompanyProfile,
+  ICrypto,
   IForex,
   IHighestMover,
   IHistoricalStockPrice,
@@ -18,6 +19,7 @@ import { IRawTicker, IRealTimeStockPrice, Ticker } from "./interfaces/symbols";
 import { IRasaConfig } from "./interfaces/training_data";
 import {
   purifyAnnualCashFlow,
+  purifyCryptos,
   purifyForex,
   purifyHighestMovers,
   purifyHistoricalPrices,
@@ -162,6 +164,22 @@ export class Requester {
         `Took ${(t1 - t0).toFixed(2)} ms to get annual cash flow for ${ticker}`
       );
       return purifyAnnualCashFlow(ticker, jsonData, csvData);
+    });
+  }
+
+  public getCryptos(): Promise<ICrypto[]> {
+    const url = `https://financialmodelingprep.com/api/cryptocurrency?datatype=json`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then((cryptos: any) => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(2)} ms to get all the cryptocurrencies`
+      );
+      return purifyCryptos(cryptos);
     });
   }
 
