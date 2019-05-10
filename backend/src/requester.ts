@@ -190,13 +190,13 @@ export class Requester {
       json: true,
       method: "GET",
       uri: url
-    }).then((financialRatios) => {
+    }).then(financialRatios => {
       const t1 = performance.now();
       this.logger.log(
         `Took ${(t1 - t0).toFixed(2)} ms to get financial ratios for ${symbol}`
       );
       return financialRatios; // TODO: add purify fn for financial ratios
-    })
+    });
   }
 
   public getCompanyProfile(symbol: string): Promise<ICompanyProfile> {
