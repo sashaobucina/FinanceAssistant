@@ -4,6 +4,7 @@ import {
   IAnnualCashFlowEntry,
   IAnnualEntry,
   IForex,
+  IHighestMover,
   IHistoricalStockPrice,
   IIncomeStatement,
   IMajorIndex,
@@ -64,6 +65,9 @@ export const purifySectorPerformance = (rawSectors: any): ISector[] => {
     };
   });
 };
+
+export const purifyHighestMovers = (highestMovers: any): IHighestMover[] =>
+  Object.values(highestMovers);
 
 export const purifyHistoricalPrices = (
   rawHistoricalPrices: IRawHistoricalPrices

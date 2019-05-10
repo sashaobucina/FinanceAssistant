@@ -1,18 +1,18 @@
-import { EntityType } from "../interfaces/entities";
+import { MoverType } from "../interfaces/financials";
 import { IIntentInfo } from "./intent_info";
 
-export class HistoricalStockPricesInfo implements IIntentInfo {
-  public readonly entity: EntityType;
+export class HighestMoversInfo implements IIntentInfo {
+  public readonly entity: null;
   public readonly intent: string;
   public readonly shortDescription: string;
   public readonly longDescription: string;
   public readonly sampleUsages: string[];
 
-  constructor() {
+  constructor(type: MoverType) {
     this.shortDescription = "";
     this.longDescription = "";
-    this.entity = "ticker";
-    this.intent = "HistoricalStockPrice";
+    this.entity = null;
     this.sampleUsages = [""];
+    this.intent = type === "gainers" ? "HighestGainers" : "BiggestLosers";
   }
 }

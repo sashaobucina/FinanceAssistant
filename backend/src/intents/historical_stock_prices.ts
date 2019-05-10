@@ -1,11 +1,11 @@
-import { Requester } from "../requester";
-import { EntityFinder } from "../entity_finder";
-import { IIntent } from "../intents";
-import { IIntentInfo } from "../info/intent_info";
-import { IEntity } from "../interfaces/rasa";
-import { ChatResponse } from "../interfaces/chat_response";
 import { failureResponses } from "../chat";
+import { EntityFinder } from "../entity_finder";
 import { HistoricalStockPricesInfo } from "../info/historical_stock_prices_info";
+import { IIntentInfo } from "../info/intent_info";
+import { IIntent } from "../intents";
+import { ChatResponse } from "../interfaces/chat_response";
+import { IEntity } from "../interfaces/rasa";
+import { Requester } from "../requester";
 
 export const historicalStockPricesFactory = (
   requester: Requester,
@@ -22,11 +22,13 @@ export class HistoricalStockPrices implements IIntent {
   public call(entities: IEntity[]): Promise<ChatResponse> {
     const ticker = this.entityFinder.extractTicker(entities);
     if (ticker === undefined) {
-      return Promise.resolve(new ChatResponse(
-        { error: failureResponses.invalidTicker },
-        "NullIntent",
-        false
-      ));
+      return Promise.resolve(
+        new ChatResponse(
+          { error: failureResponses.invalidTicker },
+          "NullIntent",
+          false
+        )
+      );
     }
     return this.requester
       .getHistoricalStockPrice(ticker.symbol)

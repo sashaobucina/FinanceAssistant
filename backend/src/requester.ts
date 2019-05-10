@@ -4,11 +4,13 @@ import {
   IAnnualCashFlow,
   ICompanyProfile,
   IForex,
+  IHighestMover,
   IHistoricalStockPrice,
   IIncomeStatement,
   IMajorIndex,
   IRawHistoricalPrices,
-  ISector
+  ISector,
+  MoverType
 } from "./interfaces/financials";
 import { ILogger } from "./interfaces/logger";
 import { RequestType } from "./interfaces/requests";
@@ -17,6 +19,7 @@ import { IRasaConfig } from "./interfaces/training_data";
 import {
   purifyAnnualCashFlow,
   purifyForex,
+  purifyHighestMovers,
   purifyHistoricalPrices,
   purifyIncomeStatement,
   purifyMajorIndexes,
@@ -211,6 +214,20 @@ export class Requester {
         )} ms to get historical stock prices for ${symbol}`
       );
       return purifyHistoricalPrices(historicalPrices);
+    });
+  }
+
+  public getHighestMovers(type: MoverType): Promise<IHighestMover[]> {
+    const url = `https://financialmodelingprep.com/api/stock/${type}?datatype=json`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then(highestMovers => {
+      const t1 = performance.now();
+      this.logger.log(`Took ${(t1 - t0).toFixed(2)} ms to get highest gainers`);
+      return purifyHighestMovers(highestMovers);
     });
   }
 

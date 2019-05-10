@@ -108,3 +108,14 @@ export interface IRawHistoricalPrices {
   name: string;
   historical: IHistoricalStockPrice[];
 }
+
+/* Highest Movers interface */
+export interface IHighestMover {
+  changes: number;
+  changesPerc: number;
+  companyName: string;
+  price: number;
+  ticker: string;
+}
+
+export type MoverType = "gainers" | "losers";
