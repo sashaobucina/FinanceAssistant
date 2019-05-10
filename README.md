@@ -15,4 +15,5 @@ Use natural language to ask the Finance Assistant questions about the financial 
 - [ ] Add frontend support for companyProfile intent (frontend)
 - [ ] Show historical stock prices as time graph (frontend)
 - [ ] Fix header navbar hamburger bug when clicking on page link in dropdown
+- [ ] Improve model accuracy
 - [ ] Deploy for production
