@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBCard, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardBody } from "mdbreact";
 import cashFlowImg from "../static/images/cash-flow.jpg";
 import cardImg from "../static/images/fintech.jpg";
+import cryptoImg from "../static/images/cryptos.jpg"
 import incomeImg from "../static/images/income-statement.jpg";
 import forexImg from "../static/images/forex.jpg";
 import indexImg from "../static/images/index.jpg";
@@ -14,6 +15,7 @@ class Help extends Component {
     switch(intentName) {
       case "AnnualCashFlow": return cashFlowImg;
       case "CompanyProfile": return overviewImg;
+      case "Cryptocurrencies": return cryptoImg;
       case "IncomeStatement": return incomeImg;
       case "Forex": return forexImg;
       case "MajorIndexes": return indexImg;
