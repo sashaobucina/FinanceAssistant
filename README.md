@@ -6,12 +6,12 @@ Use natural language to ask the Finance Assistant questions about the financial 
 - "How is the FOREX doing?"
 - "What is stock price for AAPL?"
 
+## Demo
+![](res/demo.gif)
+
 ## TODO
 - [ ] Dockerize environment and create custom Docker network
 - [ ] Aggregate and normalize all financial statement data into common form (backend)
 - [ ] Add frontend support for companyProfile intent (frontend)
 - [ ] Show historical stock prices as time graph (frontend)
 - [ ] Fix header navbar hamburger bug when clicking on page link in dropdown
-
-## Demo
-![](res/demo.gif)
