@@ -105,5 +105,29 @@
       "cryptocurrency performance",
       "crypto performance"
     ]
+  },
+  {
+    "intent": "biggestLosers",
+    "sentences": [
+      "worst performing stocks",
+      "who is performing the worst",
+      "biggest losers",
+      "what are the biggest losers",
+      "what stocks lost the most",
+      "worst performing stocks",
+      "what stocks lost the most value"
+    ]
+  },
+  {
+    "intent": "highestGainers",
+    "sentences": [
+      "best performing stocks",
+      "who is performing the best",
+      "highest gainers",
+      "what are the highest gainers",
+      "what stocks gained the most",
+      "best performing stocks",
+      "what stocks gained the most value"
+    ]
   }
 ]

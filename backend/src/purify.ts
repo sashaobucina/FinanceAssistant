@@ -67,8 +67,15 @@ export const purifySectorPerformance = (rawSectors: any): ISector[] => {
   });
 };
 
-export const purifyHighestMovers = (highestMovers: any): IHighestMover[] =>
-  Object.values(highestMovers);
+export const purifyHighestMovers = (highestMovers: any): IHighestMover[] => {
+  return Object.values(highestMovers).map((rawMovers: any) => ({
+    changes: rawMovers.Changes,
+    changesPerc: rawMovers.ChangesPerc,
+    companyName: rawMovers.companyName,
+    price: rawMovers.Price,
+    ticker: rawMovers.Ticker
+  }));
+}
 
 export const purifyHistoricalPrices = (
   rawHistoricalPrices: IRawHistoricalPrices
