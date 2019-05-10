@@ -30,17 +30,21 @@ export class CompanyProfile implements IIntent {
         )
       );
     }
-    return this.requester
-      .getCompanyProfile(ticker.symbol)
-      .then(companyProfile => {
-        return new ChatResponse(
-          {
-            profile: companyProfile,
-            ticker
-          },
-          this.info.intent,
-          true
-        );
-      });
+    const promises: Array<Promise<any>> = [
+      this.requester.getCompanyProfile(ticker.symbol),
+      this.requester.getCompanyRating(ticker.symbol)
+    ];
+    return Promise.all(promises).then(result => {
+      const [companyProfile, companyRating] = result;
+      return new ChatResponse(
+        {
+          profile: companyProfile,
+          rating: companyRating,
+          ticker
+        },
+        this.info.intent,
+        true
+      );
+    });
   }
 }
