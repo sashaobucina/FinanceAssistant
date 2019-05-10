@@ -1,3 +1,5 @@
+export type NumberOrNull = number | null;
+
 /* Income statement interfaces */
 export interface IIncomeStatement {
   csv: string;
@@ -128,3 +130,5 @@ export interface ICrypto {
   price: number;
   ticker: string;
 }
+
+/* Financial ratio interfaces */
