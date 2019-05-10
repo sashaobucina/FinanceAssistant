@@ -1,0 +1,20 @@
+.cryptos {
+  text-align: left;
+  .cryptos-title {
+    text-align: center;
+  }
+
+  table {
+    thead {
+      color: white;
+      text-align: center;
+    }
+    td {
+      text-align: center;
+      img {
+        height: 96px;
+        width: 96px;
+      }
+    }
+  }
+}

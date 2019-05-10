@@ -93,5 +93,17 @@
       "tell me the historical stock price of %ticker%",
       "show historical stock price %ticker%"
     ]
+  },
+  {
+    "intent": "cryptocurrencies",
+    "sentences": [
+      "show all the cryptocurrencies",
+      "cryptocurrencies",
+      "show all the cryptos",
+      "how are the cryptocurrencies doing",
+      "how are the cryptos doing",
+      "cryptocurrency performance",
+      "crypto performance"
+    ]
   }
 ]

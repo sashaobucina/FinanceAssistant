@@ -42,6 +42,7 @@ export const intents = (
     biggestLosers,
     companyProfile,
     companyRating,
+    cryptocurrencies,
     forex,
     highestGainers,
     historicalStockPrices,
