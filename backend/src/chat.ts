@@ -15,7 +15,7 @@ export const failureResponses = {
   connectionIssue:
     "Server may be temporarily down, I could not parse your question at this moment.",
   invalidTicker:
-    "Invalid company symbol given! Please refer to the 'Valid Symbols' page to get a list of valid symbols",
+    "Invalid company symbol given! Please re-enter your message with a valid company symbol.",
   noIntentMapping:
     "Sorry, you asked something outside the scope of my knowledge.",
   runtimeErr:
@@ -51,7 +51,7 @@ export const chatFactory = (
           verifier
         ).normalize();
         const intentStr = nlpResponse.intent;
-        const confidence = nlpResponse.confidence;
+        // const confidence = nlpResponse.confidence;
         logger.log(
           `Got back following response from the model: ${JSON.stringify(
             nlpResponse
@@ -65,14 +65,14 @@ export const chatFactory = (
               false
             )
           );
-        } else if (confidence < 0.5) {
-          res.send(
-            new ChatResponse(
-              { error: failureResponses.confidenceTooLow, status: 400 },
-              "NullIntent",
-              false
-            )
-          );
+        // } else if (confidence < 0.5) {
+        //   res.send(
+        //     new ChatResponse(
+        //       { error: failureResponses.confidenceTooLow, status: 400 },
+        //       "NullIntent",
+        //       false
+        //     )
+        //   );
         } else {
           const intentPromise = intentMap[intentStr].call(nlpResponse.entities);
           intentPromise

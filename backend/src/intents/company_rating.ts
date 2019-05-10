@@ -25,7 +25,7 @@ export class CompanyRating {
       return Promise.resolve(
         new ChatResponse(
           { error: failureResponses.invalidTicker, status: 400 },
-          "NullIntent",
+          "InvalidTicker",
           false
         )
       );

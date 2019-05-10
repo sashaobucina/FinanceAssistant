@@ -15,7 +15,7 @@ export class RasaNormalizer {
   public normalize(): NlpResponse {
     const intent = this.rasaResponse.intent.name
       ? this.rasaResponse.intent.name
-      : "nullIntent";
+      : "NullIntent";
     const entities = this.normalizeEntities(this.rasaResponse.entities);
     const confidence = this.rasaResponse.intent.confidence
       ? this.rasaResponse.intent.confidence

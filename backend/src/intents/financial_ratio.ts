@@ -25,7 +25,7 @@ export class FinancialRatios implements IIntent {
       return Promise.resolve(
         new ChatResponse(
           { error: failureResponses.invalidTicker },
-          "NullIntent",
+          "InvalidTicker",
           false
         )
       );

@@ -26,7 +26,7 @@ export class StockPrice implements IIntent {
       return Promise.resolve(
         new ChatResponse(
           { error: failureResponses.invalidTicker, status: 400 },
-          "NullIntent",
+          "InvalidTicker",
           false
         )
       );
