@@ -60,7 +60,7 @@ export const chatFactory = (
         if (intentStr === "NullIntent") {
           res.send(
             new ChatResponse(
-              { error: failureResponses.noIntentMapping, status: 400 },
+              { error: failureResponses.noIntentMapping },
               "NoIntentMapping",
               false
             )
