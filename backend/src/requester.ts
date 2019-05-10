@@ -183,6 +183,22 @@ export class Requester {
     });
   }
 
+  public getFinancialRatios(symbol: string): Promise<any> {
+    const url = `https://financialmodelingprep.com/api/financial-ratios/${symbol}?datatype=json`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then((financialRatios) => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(2)} ms to get financial ratios for ${symbol}`
+      );
+      return financialRatios; // TODO: add purify fn for financial ratios
+    })
+  }
+
   public getCompanyProfile(symbol: string): Promise<ICompanyProfile> {
     const url = `https://financialmodelingprep.com/api/company/profile/${symbol}?datatype=json`;
     const t0 = performance.now();
