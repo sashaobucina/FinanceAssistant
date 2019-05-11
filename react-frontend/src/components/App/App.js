@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ChatInput from '../ChatInput/ChatInput';
 import NullIntent from '../../intent_components/NullIntent';
 import EmptyDiv from "../Empty/EmptyDiv";
-import { Container } from 'react-bootstrap';
 import About from '../About/About';
+import { MDBContainer } from 'mdbreact';
 
 class App extends Component {
   constructor(props) {
@@ -108,7 +108,7 @@ class App extends Component {
     const { inputValue, isLoading, component } = this.state
     return (
       <div className="App">
-        <Container>
+        <MDBContainer>
           <ChatInput
             className="chat-input"
             handleViewChange={this.handleViewChange}
@@ -125,7 +125,7 @@ class App extends Component {
               component
             )}
           </div>
-        </Container>
+        </MDBContainer>
       </div>
     )
   };

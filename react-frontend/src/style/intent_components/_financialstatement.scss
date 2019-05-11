@@ -1,3 +1,13 @@
+table {
+  thead {
+    color: white;
+    text-align: center;
+  }
+  td {
+    text-align: center;
+  }
+}
+
 td {
   &[data-positive="true"] {
     color: green;

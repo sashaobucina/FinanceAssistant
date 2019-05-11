@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import FinancialStatement from "./FInancialStatement";
 
-class AnnualCashFlow extends Component {
+class BalanceSheet extends Component {
   render() {
     const { data } = this.props;
-    return <FinancialStatement data={data} title={"Annual Cash Flow"} />
+    return <FinancialStatement data={data} title={"Balance Sheet"} />
   }
 }
 
-export default AnnualCashFlow;
+export default BalanceSheet;

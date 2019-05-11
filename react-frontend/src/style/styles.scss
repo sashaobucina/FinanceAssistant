@@ -13,10 +13,8 @@
 @import 'components/Footer/footer';
 @import 'intent_components/help';
 @import 'intent_components/nullintent';
-@import 'intent_components/incomestatement';
 @import 'intent_components/companyrating';
 @import 'intent_components/stockprice';
-@import 'intent_components/annualcashflow';
 @import 'intent_components/companyprofile';
 @import 'intent_components/sectorperformance';
 @import 'intent_components/forex';
@@ -24,3 +22,4 @@
 @import 'intent_components/majorindexes';
 @import 'intent_components/cryptocurrencies';
 @import 'intent_components/financialratio.scss';
+@import 'intent_components/financialstatement';
