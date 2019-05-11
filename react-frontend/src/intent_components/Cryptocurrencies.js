@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBDataTable } from "mdbreact";
+import { MDBDataTable, MDBIcon } from "mdbreact";
 import { numberWithCommas } from "../helper";
 
 class Cryptocurrencies extends Component{
@@ -50,6 +50,7 @@ class Cryptocurrencies extends Component{
       <div className="cryptos mt-5 ml-5 mr-5">
         <h5 className="cryptos-title text-muted">
           Cryptocurrencies
+          <MDBIcon className="black-text ml-2" fab icon="bitcoin" />
         </h5>
         <MDBDataTable
           bordered
