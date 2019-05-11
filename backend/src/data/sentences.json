@@ -27,6 +27,15 @@
     ]
   },
   {
+    "intent": "balanceSheet",
+    "sentences": [
+      "balance sheet for %ticker%",
+      "give me the balance sheet for %ticker%",
+      "what is the balance sheet for %ticker%",
+      "balance sheet %ticker%"
+    ]
+  },
+  {
     "intent": "annualCashFlow",
     "sentences": [
       "annual cash flow for %ticker%",

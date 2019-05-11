@@ -65,14 +65,14 @@ export const chatFactory = (
               false
             )
           );
-        // } else if (confidence < 0.5) {
-        //   res.send(
-        //     new ChatResponse(
-        //       { error: failureResponses.confidenceTooLow, status: 400 },
-        //       "NullIntent",
-        //       false
-        //     )
-        //   );
+          // } else if (confidence < 0.5) {
+          //   res.send(
+          //     new ChatResponse(
+          //       { error: failureResponses.confidenceTooLow, status: 400 },
+          //       "NullIntent",
+          //       false
+          //     )
+          //   );
         } else {
           const intentPromise = intentMap[intentStr].call(nlpResponse.entities);
           intentPromise

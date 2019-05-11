@@ -1,33 +1,9 @@
 export type NumberOrNull = number | null;
 
-/* Income statement interfaces */
-export interface IIncomeStatement {
+/* Financial statement interfaces */
+export interface IFinancialStatement {
   csv: string;
-  financials: { [key: string]: IAnnualEntry };
-  symbol: string;
-}
-
-export interface IYearlyEntry {
-  month: number;
-  value: number;
-  year: number;
-}
-
-export interface IAnnualEntry {
-  entries: IYearlyEntry[];
-  TTM: number;
-}
-
-/* Annual cash flow interfaces */
-export interface IAnnualCashFlow {
-  csv: string;
-  financials: IAnnualCashFlowEntry[];
-  symbol: string;
-}
-
-export interface IAnnualCashFlowEntry {
-  date: string;
-  financials: { [key: string]: number };
+  financials: Array<{ [key: string]: any }>;
 }
 
 /* Company profile interfaces */

@@ -10,3 +10,10 @@ export function mapToObj<K, V>(map: Map<K, V>): any {
   map.forEach((v, k) => (obj[k] = v));
   return obj;
 }
+
+export const extractKeys = (objWithDate: { [key: string]: any }): any[] => {
+  if (objWithDate === undefined) {
+    return [];
+  }
+  return Object.keys(objWithDate).filter(key => key !== "date");
+};

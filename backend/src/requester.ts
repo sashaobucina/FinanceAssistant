@@ -1,13 +1,12 @@
 import { performance } from "perf_hooks";
 import YAML from "yaml";
 import {
-  IAnnualCashFlow,
   ICompanyProfile,
   ICrypto,
+  IFinancialStatement,
   IForex,
   IHighestMover,
   IHistoricalStockPrice,
-  IIncomeStatement,
   IMajorIndex,
   IRawHistoricalPrices,
   ISector,
@@ -18,12 +17,11 @@ import { RequestType } from "./interfaces/requests";
 import { IRawTicker, IRealTimeStockPrice, Ticker } from "./interfaces/symbols";
 import { IRasaConfig } from "./interfaces/training_data";
 import {
-  purifyAnnualCashFlow,
   purifyCryptos,
+  purifyFinancialStatement,
   purifyForex,
   purifyHighestMovers,
   purifyHistoricalPrices,
-  purifyIncomeStatement,
   purifyMajorIndexes,
   purifySectorPerformance
 } from "./purify";
@@ -117,33 +115,11 @@ export class Requester {
     });
   }
 
-  public getIncomeStatment(ticker: string): Promise<IIncomeStatement> {
-    const baseUrl = `https://financialmodelingprep.com/api/financials/income-statement/${ticker}`;
-    const t0 = performance.now();
-    const promises: Array<Promise<any>> = [
-      this.httpRequest({
-        json: true,
-        method: "GET",
-        uri: baseUrl + "?datatype=json"
-      }),
-      this.httpRequest({
-        json: false,
-        method: "GET",
-        uri: baseUrl + "?datatype=csv"
-      })
-    ];
-    return Promise.all(promises).then((results: any[]) => {
-      const t1 = performance.now();
-      const [jsonData, csvData] = results;
-      this.logger.log(
-        `Took ${(t1 - t0).toFixed(2)} ms to get income statement for ${ticker}`
-      );
-      return purifyIncomeStatement(ticker, jsonData, csvData);
-    });
-  }
-
-  public getAnnualCashFlow(ticker: string): Promise<IAnnualCashFlow> {
-    const baseUrl = `https://financialmodelingprep.com/api/v2/financials/cash-flow-statement/${ticker}`;
+  public getFinancialStatement(
+    financialStatement: string,
+    symbol: string
+  ): Promise<IFinancialStatement> {
+    const baseUrl = `https://financialmodelingprep.com/api/v2/financials/${financialStatement}/${symbol}`;
     const t0 = performance.now();
     const promises: Array<Promise<any>> = [
       this.httpRequest({
@@ -161,9 +137,13 @@ export class Requester {
       const t1 = performance.now();
       const [jsonData, csvData] = results;
       this.logger.log(
-        `Took ${(t1 - t0).toFixed(2)} ms to get annual cash flow for ${ticker}`
+        `Took ${(t1 - t0).toFixed(2)} ms to get annual cash flow for ${symbol}`
       );
-      return purifyAnnualCashFlow(ticker, jsonData, csvData);
+      const financials = purifyFinancialStatement(jsonData.financials);
+      return {
+        csv: csvData,
+        financials
+      };
     });
   }
 
