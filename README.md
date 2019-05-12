@@ -10,10 +10,10 @@ Use natural language to ask the Finance Assistant questions about the financial 
 ![](res/demo.gif)
 
 ## TODO
-- [ ] Dockerize environment and create custom Docker network
 - [X] Aggregate and normalize all financial statement data into common form (backend)
 - [ ] Add frontend support for companyProfile intent (frontend)
 - [X] Show historical stock prices as time graph (frontend)
-- [ ] Fix header navbar hamburger bug when clicking on page link in dropdown
+- [X] Fix header navbar hamburger bug when clicking on page link in dropdown
 - [ ] Improve model accuracy
+- [ ] Dockerize environment and create custom Docker network
 - [ ] Deploy for production
