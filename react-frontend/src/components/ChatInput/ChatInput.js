@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { MDBInput, MDBBtn, MDBIcon, MDBAnimation, MDBBadge } from 'mdbreact';
+import { MDBInput, MDBBtn, MDBIcon, MDBAnimation, MDBBadge, MDBCol, MDBRow } from 'mdbreact';
 
 class ChatInput extends Component {
   constructor(props) {
@@ -51,8 +50,8 @@ class ChatInput extends Component {
             Finance Assistant<MDBIcon className="ml-2" icon="comment" />
           </MDBBadge>
         </div>
-        <Row className="border rounded">
-          <Col className="offset-md-1" md={9}>
+        <MDBRow className="border rounded">
+          <MDBCol className="offset-md-1" md="9">
             <MDBInput
               type="text"
               value={inputValue}
@@ -60,8 +59,8 @@ class ChatInput extends Component {
               onChange={evt => onInputChange(evt)}
               onKeyDown={this.handleKeyPress}
             />
-          </Col>
-          <Col md={2}>
+          </MDBCol>
+          <MDBCol md="2">
             <MDBBtn className="chat-btn" gradient="blue" disabled={isLoading} onClick={this.sendMessage} >
               {(!isLoading)
                 ? <MDBIcon className="white-text" far icon="paper-plane" size="lg" />
@@ -70,8 +69,8 @@ class ChatInput extends Component {
                   </MDBAnimation>
               }
             </MDBBtn>
-          </Col>
-        </Row>
+          </MDBCol>
+        </MDBRow>
       </div>
     )
   }

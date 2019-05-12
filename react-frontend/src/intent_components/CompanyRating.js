@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
 import CompanyLogo from "../components/CompanyLogo/CompanyLogo";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { MDBRow, MDBCol } from "mdbreact";
 
 class CompanyRating extends Component {
   showRating(rating) {
@@ -13,14 +13,14 @@ class CompanyRating extends Component {
   render() {
     const { rating, ticker } = this.props.data
     return (
-      <Row>
-        <Col md={{ span: 10, offset: 1 }}>
+      <MDBRow>
+        <MDBCol className="offset-md-1" md="10">
           <CompanyLogo symbol={ticker.symbol} />
           <div className="company-rating">
             {ticker.companyName}'s Company Rating: {this.showRating(rating)}
           </div>
-        </Col>
-      </Row>
+        </MDBCol>
+      </MDBRow>
     )
   }
 }

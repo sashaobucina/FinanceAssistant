@@ -1,26 +1,26 @@
 import React, { Component } from "react";
-import { Col, Row } from "react-bootstrap";
+import { MDBRow, MDBCol } from "mdbreact";
 
 class NullIntent extends Component {
   render() {
     const { error, status } = this.props.data
     return (
       <section className="page-404">
-        <Row>
-          <Col md={{ span: 10, offset:1 }}>
+        <MDBRow>
+          <MDBCol className="offset-md-1" md="10">
               <div className="four-zero-four-bg">
                 <h1 className="text-muted">{status}</h1>
               </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={{ span: 8, offset:2 }}>
+          </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <MDBCol className="offset-md-2" md="8">
             <div className="text-muted content-box-404">
               <h4>{error}</h4>
               <p>Please try again later!</p>
             </div>
-          </Col>
-        </Row>
+          </MDBCol>
+        </MDBRow>
       </section>
     )
   }

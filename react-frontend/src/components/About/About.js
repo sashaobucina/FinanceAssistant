@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Row, Col } from "react-bootstrap";
-import { MDBIcon } from "mdbreact";
+import { MDBIcon, MDBRow, MDBCol } from "mdbreact";
 
 class About extends Component {
   render() {
     return (
-      <Row>
-        <Col md={{ span: 10, offset: 1 }}>
+      <MDBRow>
+        <MDBCol className="offset-md-1" md="10">
           <div className="about-help">
             <p>Type '<samp>help</samp>' to get started!</p>
           </div>
@@ -20,8 +19,8 @@ class About extends Component {
               <MDBIcon className="ml-2" fab icon="ethereum" />
             </p>
           </div>
-        </Col>
-      </Row>
+        </MDBCol>
+      </MDBRow>
     )
   }
 }
