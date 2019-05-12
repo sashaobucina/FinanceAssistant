@@ -1,47 +1,94 @@
 import React, { Component } from "react";
-import Chart from "chart.js";
+import Plot from "react-plotly.js";
+import { getMinMax } from "../helper";
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 class HistoricalStockPrice extends Component {
-  constructor(props) {
-    super(props);
-    this.chartRef = React.createRef();
-  }
-
-  componentDidMount() {
-    const myChartRef = this.chartRef.current.getContext('2d');
-
-    new Chart(myChartRef, {
-      type: "line",
-        data: {
-            //Bring in data
-            labels: ["Jan", "Feb", "March"],
-            datasets: [
-                {
-                    label: "Sales",
-                    data: [86, 67, 91],
-                }
-            ]
-        },
-        options: {
-            //Customize chart options
-        }
-    });
-  }
-
   render() {
-    const { historicalStockPrices } = this.props.data;
+    const { historicalStockPrices, ticker } = this.props.data;
+
+    // plot values
+    const dates = historicalStockPrices.map(price => price.date);
+    const highs = historicalStockPrices.map(price => price.high);
+    const lows = historicalStockPrices.map(price => price.low);
+
+    // traces
+    const trace1 = {
+      type: "scatter",
+      mode: "lines",
+      name: `${ticker.symbol} High`,
+      x: dates,
+      y: highs,
+      line: {color: 'green'}
+    }
+
+    const trace2 = {
+      type: "scatter",
+      mode: "lines",
+      name: `${ticker.symbol} Low`,
+      x: dates,
+      y: lows,
+      line: {color: 'red'}
+    }
+
+    // ranges
+    const dateRange = getMinMax(historicalStockPrices, 'date');
+    const low = getMinMax(historicalStockPrices, "low").low;
+    const high = getMinMax(historicalStockPrices, "high").high;
+
     return (
-      <>
-        <div>
-          <canvas
-            id="myChart"
-            ref={this.chartRef}
-          />
-        </div>
-        <div className="historical-stock-prices">
-          {JSON.stringify(historicalStockPrices)}
-        </div>
-      </>
+      <div className="historical-stock-prices">
+        <MDBContainer>
+          <MDBRow>
+            <MDBCol md="12">
+              <Plot
+                data={[ trace1, trace2 ]}
+                layout={{
+                  title: `Historical Stock Price for ${ticker.companyName} (NYSE)`,
+                  xaxis: {
+                    range: [dateRange["low"], dateRange["high"]],
+                    rangeselector: { buttons: [
+                      {
+                        count: 1,
+                        label: "1m",
+                        step: "month",
+                        stepmode: "backward"
+                      },
+                      {
+                        count: 3,
+                        label: "3m",
+                        step: "month",
+                        stepmode: "backward"
+                      },
+                      {
+                        count: 6,
+                        label: "6m",
+                        step: "month",
+                        stepmode: "backward"
+                      },
+                      {
+                        count: 1,
+                        label: "1y",
+                        step: "year",
+                        stepmode: "backward"
+                      }
+                    ]},
+                    rangeslider: { range: [dateRange["low"], dateRange["high"]] },
+                    type: 'date'
+                  },
+                  yaxis: {
+                    autorange: true,
+                    range: [low, high],
+                    type: 'linear'
+                  }
+                }}
+                useResizeHandler={true}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </div>
     )
   }
 }

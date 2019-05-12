@@ -8,3 +8,10 @@ export const numberWithCommas = (num) => {
 export const isNumber = (val) => {
   return !isNaN(parseFloat(val) && !isNaN(val - 0));
 }
+
+export const getMinMax = (historicalPrices, key) => {
+  const values = historicalPrices.map(price => price[key]);
+  const low = key === 'date' ? values[0] : Math.min(...values);
+  const high = key === 'date' ? values[values.length - 1] : Math.max(...values);
+  return { low, high };
+}
