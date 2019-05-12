@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { MDBNavbar, MDBNavbarBrand, MDBCollapse, MDBNavItem, MDBNavbarNav, MDBIcon, MDBNavbarToggler } from "mdbreact";
+import { MDBNavbar, MDBNavbarBrand, MDBCollapse, MDBNavItem, MDBNavbarNav, MDBIcon, MDBNavbarToggler, MDBAnimation } from "mdbreact";
 import hamburgerIcon from "../../static/images/hamburger-svg.png"
 
 class Header extends Component {
@@ -24,7 +24,9 @@ class Header extends Component {
               <strong>Finance Assistant<MDBIcon className="ml-1" icon="hand-holding-usd" /></strong>
             </Link>
           </MDBNavbarBrand>
-          <MDBNavbarToggler image={hamburgerIcon} className="mr-2" id="hamburger1" onClick={this.toggleCollapse('navbarCollapse1')} />
+          <MDBAnimation className="hoverable" type="rubberBand">
+            <MDBNavbarToggler image={hamburgerIcon} className="mr-2" id="hamburger1" onClick={this.toggleCollapse('navbarCollapse1')} />
+          </MDBAnimation>
           <MDBCollapse id="navbarCollapse1" isOpen={this.state.collapseID} navbar>
             <MDBNavbarNav style={{ textAlign: "left", marginTop: "15px" }}>
               <MDBNavItem active>
