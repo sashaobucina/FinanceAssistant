@@ -4,15 +4,13 @@ import { IIntentInfo } from "./intent_info";
 export class CashFlowInfo implements IIntentInfo {
   public readonly entity: EntityType;
   public readonly intent: string;
-  public readonly longDescription: string;
-  public readonly shortDescription: string;
+  public readonly description: string;
   public readonly sampleUsages: string[];
 
   constructor() {
     this.entity = "ticker";
     this.intent = "CashFlow";
-    this.longDescription = "";
-    this.shortDescription = "";
+    this.description = "";
     this.sampleUsages = [];
   }
 }
