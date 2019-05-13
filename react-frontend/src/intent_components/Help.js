@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBCard, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardBody } from "mdbreact";
+import { MDBCard, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBCardImage, MDBCardBody, MDBListGroup, MDBListGroupItem } from "mdbreact";
 import balanceSheetImg from "../static/images/balance-sheet.jpg"
 import cashFlowImg from "../static/images/cash-flow.jpg";
 import cardImg from "../static/images/fintech.jpg";
@@ -14,17 +14,28 @@ import stockImg from "../static/images/stock-price.jpg";
 class Help extends Component {
   intentToImg(intentName) {
     switch(intentName) {
-      case "AnnualCashFlow": return cashFlowImg;
+      case "CashFlow": return cashFlowImg;
       case "BalanceSheet": return balanceSheetImg;
       case "CompanyProfile": return overviewImg;
       case "Cryptocurrencies": return cryptoImg;
+      case "HistoricalStockPrice": return stockImg;
       case "IncomeStatement": return incomeImg;
       case "Forex": return forexImg;
       case "MajorIndexes": return indexImg;
       case "SectorPerformance": return sectorImg;
-      case "StockPrice": return stockImg;
       default: return cardImg;
     }
+  }
+
+  createSampleUsagesList = (sampleUsages) => {
+    const sampleUsagesJSX = sampleUsages.map(sampleUsage => {
+      return <MDBListGroupItem>{`"${sampleUsage}"`}</MDBListGroupItem>
+    });
+    return (
+      <MDBListGroup>
+        {sampleUsagesJSX}
+      </MDBListGroup>
+    )
   }
 
   generateIntentCards(intentInfos) {
@@ -32,12 +43,20 @@ class Help extends Component {
       <MDBCol key={intentInfo.intent} className="mb-4" md="4">
         <MDBCard>
           <MDBCardImage className="card-img" src={this.intentToImg(intentInfo.intent)} />
-          <MDBCardBody style={{ textAlign: "center" }}>
+          <MDBCardBody>
             <MDBCardTitle>{intentInfo.intent}</MDBCardTitle>
-            <MDBCardText>
-              Shows the annual income statements for the past few years if provided a
-              <span className="font-italic"> valid symbol</span>.
-            </MDBCardText>
+            <div className="help-card-text" style={{ textAlign: "left", fontSize: "15px" }}>
+              <p>
+                <b>Description:</b><br></br>
+                {intentInfo.description}
+              </p>
+              <p>
+                <b>Required Entity:</b><br></br>
+                <span className="font-italic">{intentInfo.entity !== null ? "Company Symbol" : "None"}</span>
+              </p>
+              <p><b>Sample Usages: </b></p>
+              {this.createSampleUsagesList(intentInfo.sampleUsages)}
+            </div>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
@@ -46,7 +65,7 @@ class Help extends Component {
 
   render() {
     const { intentInfos } = this.props.data;
-    console.log(this.generateIntentCards(intentInfos))
+    console.log(intentInfos);
     return(
       <div className="help-intent mb-3">
         <div className="help-label">
