@@ -4,8 +4,8 @@ import { companyProfileFactory } from "./intents/company_profile";
 import { cryptocurrenciesFactory } from "./intents/cyptos";
 import { financialRatiosFactory } from "./intents/financial_ratio";
 import {
-  annualCashFlowFactory,
   balanceSheetFactory,
+  cashFlowFactory,
   incomeStatementFactory
 } from "./intents/financial_statement";
 import { forexFactory } from "./intents/forex";
@@ -24,7 +24,7 @@ export const intents = (
   requester: Requester,
   entityFinder: EntityFinder
 ): IIntentMap => {
-  const annualCashFlow = annualCashFlowFactory(requester, entityFinder);
+  const cashFlow = cashFlowFactory(requester, entityFinder);
   const balanceSheet = balanceSheetFactory(requester, entityFinder);
   const biggestLosers = biggestLosersFactory(requester);
   const companyProfile = companyProfileFactory(requester, entityFinder);
@@ -40,9 +40,9 @@ export const intents = (
   const majorIndexes = majorIndexesFactory(requester);
   const sectorPerformance = sectorPerformanceFactory(requester);
   return {
-    annualCashFlow,
     balanceSheet,
     biggestLosers,
+    cashFlow,
     companyProfile,
     cryptocurrencies,
     financialRatios,

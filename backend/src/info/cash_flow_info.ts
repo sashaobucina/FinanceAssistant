@@ -1,7 +1,7 @@
 import { EntityType } from "../interfaces/entities";
 import { IIntentInfo } from "./intent_info";
 
-export class AnnualCashFlowInfo implements IIntentInfo {
+export class CashFlowInfo implements IIntentInfo {
   public readonly entity: EntityType;
   public readonly intent: string;
   public readonly longDescription: string;
@@ -10,7 +10,7 @@ export class AnnualCashFlowInfo implements IIntentInfo {
 
   constructor() {
     this.entity = "ticker";
-    this.intent = "AnnualCashFlow";
+    this.intent = "CashFlow";
     this.longDescription = "";
     this.shortDescription = "";
     this.sampleUsages = [];

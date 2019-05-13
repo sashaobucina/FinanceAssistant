@@ -1,7 +1,7 @@
 import { failureResponses } from "../chat";
 import { EntityFinder } from "../entity_finder";
-import { AnnualCashFlowInfo } from "../info/annual_cash_flow_info";
 import { BalanceSheetInfo } from "../info/balance_sheet_info";
+import { CashFlowInfo } from "../info/cash_flow_info";
 import { IncomeStatementInfo } from "../info/income_statement_info";
 import { IIntentInfo } from "../info/intent_info";
 import { IIntent } from "../intents";
@@ -9,14 +9,14 @@ import { ChatResponse } from "../interfaces/chat_response";
 import { IEntity } from "../interfaces/rasa";
 import { Requester } from "../requester";
 
-export const annualCashFlowFactory = (
+export const cashFlowFactory = (
   requester: Requester,
   entityFinder: EntityFinder
 ): FinancialStatement =>
   new FinancialStatement(
     requester,
     entityFinder,
-    new AnnualCashFlowInfo(),
+    new CashFlowInfo(),
     "cash-flow-statement"
   );
 

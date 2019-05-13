@@ -137,7 +137,7 @@ export class Requester {
       const t1 = performance.now();
       const [jsonData, csvData] = results;
       this.logger.log(
-        `Took ${(t1 - t0).toFixed(2)} ms to get annual cash flow for ${symbol}`
+        `Took ${(t1 - t0).toFixed(2)} ms to get cash flow for ${symbol}`
       );
       const financials = purifyFinancialStatement(jsonData.financials);
       return {

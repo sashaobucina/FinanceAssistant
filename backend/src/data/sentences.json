@@ -18,12 +18,12 @@
     ]
   },
   {
-    "intent": "annualCashFlow",
+    "intent": "cashFlow",
     "sentences": [
-      "annual cash flow for %ticker%",
-      "what is the annual cash flow for %ticker%",
-      "give the annual cash flow for %ticker%",
-      "annual cash flow %ticker%"
+      "cash flow for %ticker%",
+      "what is the cash flow for %ticker%",
+      "give the cash flow for %ticker%",
+      "cash flow %ticker%"
     ]
   },
   {
