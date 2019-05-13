@@ -10,6 +10,11 @@ export class ForexInfo implements IIntentInfo {
     this.entity = null;
     this.intent = "Forex";
     this.description = "";
-    this.sampleUsages = [""];
+    this.sampleUsages = [
+      "how is the foreign exchange market doing",
+      "how is the forex doing",
+      "forex",
+      "how are the currencies doing",
+    ];
   }
 }

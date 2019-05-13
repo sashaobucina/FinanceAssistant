@@ -10,6 +10,11 @@ export class CryptocurrenciesInfo implements IIntentInfo {
     this.entity = null;
     this.intent = "Cryptocurrencies";
     this.description = "";
-    this.sampleUsages = [""];
+    this.sampleUsages = [
+      "cryptocurrencies",
+      "show all the cryptos",
+      "how are the cryptos doing",
+      "cryptocurrency performance",
+    ];
   }
 }

@@ -11,6 +11,11 @@ export class BalanceSheetInfo implements IIntentInfo {
     this.description = "";
     this.entity = "ticker";
     this.intent = "BalanceSheet";
-    this.sampleUsages = [""];
+    this.sampleUsages = [
+      "balance sheet for GOOGL",
+      "give me the balance sheet for IBM",
+      "what is the balance sheet for CHK",
+      "balance sheet RY"
+    ];
   }
 }

@@ -2,7 +2,7 @@ import { EntityFinder } from "./entity_finder";
 import { IIntentInfo } from "./info/intent_info";
 import { companyProfileFactory } from "./intents/company_profile";
 import { cryptocurrenciesFactory } from "./intents/cyptos";
-import { financialRatiosFactory } from "./intents/financial_ratio";
+// import { financialRatiosFactory } from "./intents/financial_ratio";
 import {
   balanceSheetFactory,
   cashFlowFactory,
@@ -29,7 +29,7 @@ export const intents = (
   const biggestLosers = biggestLosersFactory(requester);
   const companyProfile = companyProfileFactory(requester, entityFinder);
   const cryptocurrencies = cryptocurrenciesFactory(requester);
-  const financialRatios = financialRatiosFactory(requester, entityFinder);
+  // const financialRatios = financialRatiosFactory(requester, entityFinder);
   const forex = forexFactory(requester);
   const highestGainers = highestGainersFactory(requester);
   const historicalStockPrices = historicalStockPricesFactory(
@@ -45,7 +45,7 @@ export const intents = (
     cashFlow,
     companyProfile,
     cryptocurrencies,
-    financialRatios,
+    // financialRatios,
     forex,
     highestGainers,
     historicalStockPrices,

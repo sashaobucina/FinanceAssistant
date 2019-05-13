@@ -10,6 +10,11 @@ export class MajorIndexesInfo implements IIntentInfo {
     this.entity = null;
     this.intent = "MajorIndexes";
     this.description = "";
-    this.sampleUsages = [""];
+    this.sampleUsages = [
+      "major indexes",
+      "how are the major indexes doing",
+      "how are the stock markets doing",
+      "stock market activity",
+    ];
   }
 }

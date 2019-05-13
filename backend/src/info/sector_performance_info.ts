@@ -10,6 +10,11 @@ export class SectorPerformanceInfo implements IIntentInfo {
     this.entity = null;
     this.intent = "SectorPerformance";
     this.description = "";
-    this.sampleUsages = [];
+    this.sampleUsages = [
+      "sector performance",
+      "how are the financial sectors performing",
+      "how was the performance of the financial sectors",
+      "financial sector performance"
+    ];
   }
 }

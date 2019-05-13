@@ -10,6 +10,11 @@ export class IncomeStatementInfo implements IIntentInfo {
     this.entity = "ticker";
     this.intent = "IncomeStatement";
     this.description = "";
-    this.sampleUsages = [];
+    this.sampleUsages = [
+      "income statement for CRM",
+      "give me the income statement for CSCO",
+      "what is the income statement for SNV",
+      "income statment WPO"
+    ];
   }
 }

@@ -11,6 +11,11 @@ export class HighestMoversInfo implements IIntentInfo {
     this.entity = null;
     this.intent = type === "gainers" ? "HighestGainers" : "BiggestLosers";
     this.description = "";
-    this.sampleUsages = [""];
+    this.sampleUsages = [
+      "highest gainers",
+      "what are the highest gainers",
+      "what stocks gained the most",
+      "best performing stocks",
+    ];
   }
 }

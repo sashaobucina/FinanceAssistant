@@ -11,6 +11,11 @@ export class CashFlowInfo implements IIntentInfo {
     this.entity = "ticker";
     this.intent = "CashFlow";
     this.description = "";
-    this.sampleUsages = [];
+    this.sampleUsages = [
+      "cash flow for INTC",
+      "what is the cash flow for X",
+      "give the cash flow for NVR",
+      "cash flow ALX"
+    ];
   }
 }
