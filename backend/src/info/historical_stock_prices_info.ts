@@ -11,6 +11,11 @@ export class HistoricalStockPricesInfo implements IIntentInfo {
     this.entity = "ticker";
     this.intent = "HistoricalStockPrice";
     this.description = "";
-    this.sampleUsages = [""];
+    this.sampleUsages = [
+      "stock price for FB",
+      "historical stock price for AAPL",
+      "show the historical stock prices for GOOG",
+      "how is NFLX doing"
+    ];
   }
 }
