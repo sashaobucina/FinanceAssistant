@@ -9,15 +9,6 @@
     ]
   },
   {
-    "intent": "companyRating",
-    "sentences": [
-      "company rating for %ticker%",
-      "how is %ticker% rated",
-      "what is the company rating for %ticker%",
-      "rating for %ticker%"
-    ]
-  },
-  {
     "intent": "incomeStatement",
     "sentences": [
       "income statement for %ticker%",

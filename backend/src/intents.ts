@@ -1,7 +1,6 @@
 import { EntityFinder } from "./entity_finder";
 import { IIntentInfo } from "./info/intent_info";
 import { companyProfileFactory } from "./intents/company_profile";
-import { companyRatingFactory } from "./intents/company_rating";
 import { cryptocurrenciesFactory } from "./intents/cyptos";
 import { financialRatiosFactory } from "./intents/financial_ratio";
 import {
@@ -31,7 +30,6 @@ export const intents = (
   const biggestLosers = biggestLosersFactory(requester);
   const companyProfile = companyProfileFactory(requester, entityFinder);
   const cryptocurrencies = cryptocurrenciesFactory(requester);
-  const companyRating = companyRatingFactory(requester, entityFinder);
   const financialRatios = financialRatiosFactory(requester, entityFinder);
   const forex = forexFactory(requester);
   const highestGainers = highestGainersFactory(requester);
@@ -48,7 +46,6 @@ export const intents = (
     balanceSheet,
     biggestLosers,
     companyProfile,
-    companyRating,
     cryptocurrencies,
     financialRatios,
     forex,
