@@ -30,7 +30,6 @@ class HighestMovers extends Component {
         field: 'changesPerc'
       }
     ];
-    console.log(data)
     const rows = data.map((elem, index) => {
       const { changes, changesPerc, companyName, price, ticker } = elem;
       return {
