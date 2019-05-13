@@ -11,6 +11,11 @@ export class CompanyProfileInfo implements IIntentInfo {
     this.entity = "ticker";
     this.intent = "CompanyProfile";
     this.description = "";
-    this.sampleUsages = [];
+    this.sampleUsages = [
+      "company profile of MSFT",
+      "show me the details of TSLA",
+      "what is the company profile of RY",
+      "overview of INTC"
+    ];
   }
 }
