@@ -5,7 +5,7 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 class HistoricalStockPrice extends Component {
   render() {
-    const { historicalStockPrices, ticker } = this.props.data;
+    const { historicalStockPrices, realTimeStockPrice, ticker } = this.props.data;
 
     // plot values
     const dates = historicalStockPrices.map(price => price.date);
@@ -38,6 +38,9 @@ class HistoricalStockPrice extends Component {
 
     return (
       <div className="historical-stock-prices">
+        <h5>
+          Real Time Stock Price for {ticker.symbol}: <span className="font-weight-bolder">{`$${Number(realTimeStockPrice.price).toFixed(2)}`}</span>
+        </h5>
         <MDBContainer>
           <MDBRow>
             <MDBCol md="12">

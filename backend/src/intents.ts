@@ -16,7 +16,6 @@ import {
 import { historicalStockPricesFactory } from "./intents/historical_stock_prices";
 import { majorIndexesFactory } from "./intents/major_indexes";
 import { sectorPerformanceFactory } from "./intents/sector_performance";
-import { stockPriceFactory } from "./intents/stock_price";
 import { ChatResponse } from "./interfaces/chat_response";
 import { IEntity } from "./interfaces/rasa";
 import { Requester } from "./requester";
@@ -40,7 +39,6 @@ export const intents = (
   const incomeStatement = incomeStatementFactory(requester, entityFinder);
   const majorIndexes = majorIndexesFactory(requester);
   const sectorPerformance = sectorPerformanceFactory(requester);
-  const stockPrice = stockPriceFactory(requester, entityFinder);
   return {
     annualCashFlow,
     balanceSheet,
@@ -53,8 +51,7 @@ export const intents = (
     historicalStockPrices,
     incomeStatement,
     majorIndexes,
-    sectorPerformance,
-    stockPrice
+    sectorPerformance
   };
 };
 

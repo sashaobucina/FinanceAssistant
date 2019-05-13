@@ -30,14 +30,17 @@ export class HistoricalStockPrices implements IIntent {
         )
       );
     }
-    return this.requester
-      .getHistoricalStockPrice(ticker.symbol)
-      .then(historicalStockPrices => {
-        return new ChatResponse(
-          { historicalStockPrices, ticker },
-          this.info.intent,
-          true
-        );
-      });
+    const promises: Array<Promise<any>> = [
+      this.requester.getHistoricalStockPrice(ticker.symbol),
+      this.requester.getRealTimeStockPrice(ticker.symbol)
+    ];
+    return Promise.all(promises).then(results => {
+      const [historicalStockPrices, realTimeStockPrice] = results;
+      return new ChatResponse(
+        { historicalStockPrices, realTimeStockPrice, ticker },
+        this.info.intent,
+        true
+      );
+    });
   }
 }

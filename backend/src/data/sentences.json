@@ -1,14 +1,5 @@
 [
   {
-    "intent": "stockPrice",
-    "sentences": [
-      "what is the stock price for %ticker%",
-      "stock price for %ticker",
-      "real time stock price for %ticker%",
-      "how is %ticker% doing"
-    ]
-  },
-  {
     "intent": "incomeStatement",
     "sentences": [
       "income statement for %ticker%",
@@ -86,6 +77,10 @@
   {
     "intent": "historicalStockPrices",
     "sentences": [
+      "what is the stock price for %ticker%",
+      "stock price for %ticker",
+      "real time stock price for %ticker%",
+      "how is %ticker% doing",
       "show the historical stock price of %ticker%",
       "historical stock price of %ticker%",
       "what is the historical stock price of %ticker%",
