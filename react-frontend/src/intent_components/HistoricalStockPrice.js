@@ -19,7 +19,7 @@ class HistoricalStockPrice extends Component {
       name: `${ticker.symbol} High`,
       x: dates,
       y: highs,
-      line: {color: 'green'}
+      line: {color: 'rgb(23, 155, 207)'}
     }
 
     const trace2 = {
@@ -28,7 +28,7 @@ class HistoricalStockPrice extends Component {
       name: `${ticker.symbol} Low`,
       x: dates,
       y: lows,
-      line: {color: 'red'}
+      line: {color: '#7F7F7F'}
     }
 
     // ranges
