@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { MDBCard, MDBContainer, MDBRow, MDBCol, MDBCardTitle, MDBCardImage, MDBCardBody, MDBListGroup, MDBListGroupItem } from "mdbreact";
 import balanceSheetImg from "../static/images/balance-sheet.jpg"
+import biggestLoserImg from "../static/images/biggest-loser.jpg";
 import cashFlowImg from "../static/images/cash-flow.jpg";
 import cardImg from "../static/images/fintech.jpg";
 import cryptoImg from "../static/images/cryptos.jpg"
 import incomeImg from "../static/images/income-statement.jpg";
 import forexImg from "../static/images/forex.jpg";
+import highestGainersImg from "../static/images/highest-movers.jpg";
 import indexImg from "../static/images/index.jpg";
 import overviewImg from "../static/images/overview.jpg"
 import sectorImg from "../static/images/sector.jpg";
@@ -14,10 +16,12 @@ import stockImg from "../static/images/stock-price.jpg";
 class Help extends Component {
   intentToImg(intentName) {
     switch(intentName) {
+      case "BiggestLosers": return biggestLoserImg;
       case "CashFlow": return cashFlowImg;
       case "BalanceSheet": return balanceSheetImg;
       case "CompanyProfile": return overviewImg;
       case "Cryptocurrencies": return cryptoImg;
+      case "HighestGainers": return highestGainersImg;
       case "HistoricalStockPrice": return stockImg;
       case "IncomeStatement": return incomeImg;
       case "Forex": return forexImg;
