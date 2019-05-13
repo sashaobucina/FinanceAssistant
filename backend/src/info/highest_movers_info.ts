@@ -15,7 +15,7 @@ export class HighestMoversInfo implements IIntentInfo {
       "highest gainers",
       "what are the highest gainers",
       "what stocks gained the most",
-      "best performing stocks",
+      "best performing stocks"
     ];
   }
 }

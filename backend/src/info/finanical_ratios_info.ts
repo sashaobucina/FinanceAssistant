@@ -11,8 +11,6 @@ export class FinancialRatiosInfo implements IIntentInfo {
     this.entity = "ticker";
     this.intent = "FinancialRatio";
     this.description = "";
-    this.sampleUsages = [
-      ""
-    ];
+    this.sampleUsages = [""];
   }
 }

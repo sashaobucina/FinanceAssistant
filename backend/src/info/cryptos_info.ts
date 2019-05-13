@@ -14,7 +14,7 @@ export class CryptocurrenciesInfo implements IIntentInfo {
       "cryptocurrencies",
       "show all the cryptos",
       "how are the cryptos doing",
-      "cryptocurrency performance",
+      "cryptocurrency performance"
     ];
   }
 }

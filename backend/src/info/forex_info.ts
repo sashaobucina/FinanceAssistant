@@ -14,7 +14,7 @@ export class ForexInfo implements IIntentInfo {
       "how is the foreign exchange market doing",
       "how is the forex doing",
       "forex",
-      "how are the currencies doing",
+      "how are the currencies doing"
     ];
   }
 }

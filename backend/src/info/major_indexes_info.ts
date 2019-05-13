@@ -14,7 +14,7 @@ export class MajorIndexesInfo implements IIntentInfo {
       "major indexes",
       "how are the major indexes doing",
       "how are the stock markets doing",
-      "stock market activity",
+      "stock market activity"
     ];
   }
 }
