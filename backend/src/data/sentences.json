@@ -124,5 +124,16 @@
       "best performing stocks",
       "what stocks gained the most value"
     ]
+  },
+  {
+    "intent": "financialRatios",
+    "sentences": [
+      "financials ratios for %ticker%",
+      "financials ratios %ticker%",
+      "what are the financials ratios for %ticker%",
+      "ratios for %ticker%",
+      "financial measures for %ticker%",
+      "%ticker% ratios"
+    ]
   }
 ]
