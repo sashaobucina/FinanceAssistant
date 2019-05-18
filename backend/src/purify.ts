@@ -70,6 +70,11 @@ export const purifyCryptos = (rawCryptos: any): ICrypto[] => {
   }));
 };
 
+export const purifyFinancialRatios = (rawRatios: any): any => {
+  // TODO
+  return rawRatios;
+};
+
 export const purifyFinancialStatement = (rawFinancials: any): any => {
   const financialEntries: string[] = extractKeys(rawFinancials[0]);
   return financialEntries.map(financialEntry => {

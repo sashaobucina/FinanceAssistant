@@ -18,6 +18,7 @@ import { IRawTicker, IRealTimeStockPrice, Ticker } from "./interfaces/symbols";
 import { IRasaConfig } from "./interfaces/training_data";
 import {
   purifyCryptos,
+  purifyFinancialRatios,
   purifyFinancialStatement,
   purifyForex,
   purifyHighestMovers,
@@ -175,7 +176,7 @@ export class Requester {
       this.logger.log(
         `Took ${(t1 - t0).toFixed(2)} ms to get financial ratios for ${symbol}`
       );
-      return financialRatios; // TODO: add purify fn for financial ratios
+      return purifyFinancialRatios(financialRatios);
     });
   }
 
