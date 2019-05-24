@@ -82,6 +82,24 @@ export class Requester {
     });
   }
 
+  public getKeyMetrics(symbol: string): Promise<any> {
+    const url = `https://financialmodelingprep.com/api/v3/company-key-metrics/${symbol}`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then((rawKeyMetrics: any) => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(
+          2
+        )} ms to get key metrics information for ${symbol}`
+      );
+      return rawKeyMetrics;
+    });
+  }
+
   public getMajorIndexes(): Promise<IMajorIndex[]> {
     const url = `https://financialmodelingprep.com/api/majors-indexes?datatype=json`;
     const t0 = performance.now();

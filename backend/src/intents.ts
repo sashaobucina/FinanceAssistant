@@ -14,6 +14,7 @@ import {
   highestGainersFactory
 } from "./intents/highest_mover";
 import { historicalStockPricesFactory } from "./intents/historical_stock_prices";
+import { keyMetricsFactory } from "./intents/key_metrics";
 import { majorIndexesFactory } from "./intents/major_indexes";
 import { sectorPerformanceFactory } from "./intents/sector_performance";
 import { ChatResponse } from "./interfaces/chat_response";
@@ -37,6 +38,7 @@ export const intents = (
     entityFinder
   );
   const incomeStatement = incomeStatementFactory(requester, entityFinder);
+  const keyMetrics = keyMetricsFactory(requester, entityFinder);
   const majorIndexes = majorIndexesFactory(requester);
   const sectorPerformance = sectorPerformanceFactory(requester);
   return {
@@ -50,6 +52,7 @@ export const intents = (
     highestGainers,
     historicalStockPrices,
     incomeStatement,
+    keyMetrics,
     majorIndexes,
     sectorPerformance
   };
