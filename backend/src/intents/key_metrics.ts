@@ -10,7 +10,7 @@ import { Requester } from "../requester";
 export const keyMetricsFactory = (
   requester: Requester,
   entityFinder: EntityFinder
-): KeyMetrics => new KeyMetrics(requester, entityFinder);
+) => new KeyMetrics(requester, entityFinder);
 
 export class KeyMetrics implements IIntent {
   public readonly info: IIntentInfo = new KeyMetricsInfo();
