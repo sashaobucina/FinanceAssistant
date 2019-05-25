@@ -1,3 +1,5 @@
+export type None = undefined | null | "";
+
 export const rejectAttr = (obj: any, filterFn: (e: any) => any): any => {
   return Object.keys(obj)
     .filter(filterFn)
