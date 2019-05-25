@@ -96,7 +96,7 @@ export class Requester {
           2
         )} ms to get key metrics information for ${symbol}`
       );
-      return rawKeyMetrics;
+      return purifyFinancialStatement(rawKeyMetrics.metrics);
     });
   }
 
@@ -112,7 +112,7 @@ export class Requester {
       this.logger.log(
         `Took ${(t1 - t0).toFixed(2)} ms to get enterprise values for ${symbol}`
       );
-      return rawEnterpriseValues;
+      return purifyFinancialStatement(rawEnterpriseValues.enterpriseValues);
     });
   }
 
@@ -128,7 +128,7 @@ export class Requester {
       this.logger.log(
         `Took ${(t1 - t0).toFixed(2)} ms to get financial growth for ${symbol}`
       );
-      return rawFinancialGrowth;
+      return purifyFinancialStatement(rawFinancialGrowth.growth);
     });
   }
 
