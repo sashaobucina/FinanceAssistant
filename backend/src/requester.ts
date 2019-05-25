@@ -100,6 +100,38 @@ export class Requester {
     });
   }
 
+  public getEnterpriseValues(symbol: string): Promise<any> {
+    const url = `https://financialmodelingprep.com/api/v3/enterprise-value/${symbol}`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then(rawEnterpriseValues => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(2)} ms to get enterprise values for ${symbol}`
+      );
+      return rawEnterpriseValues;
+    });
+  }
+
+  public getFinancialGrowth(symbol: string): Promise<any> {
+    const url = `https://financialmodelingprep.com/api/v3/financial-statement-growth/${symbol}`;
+    const t0 = performance.now();
+    return this.httpRequest({
+      json: true,
+      method: "GET",
+      uri: url
+    }).then(rawFinancialGrowth => {
+      const t1 = performance.now();
+      this.logger.log(
+        `Took ${(t1 - t0).toFixed(2)} ms to get financial growth for ${symbol}`
+      );
+      return rawFinancialGrowth;
+    });
+  }
+
   public getMajorIndexes(): Promise<IMajorIndex[]> {
     const url = `https://financialmodelingprep.com/api/majors-indexes?datatype=json`;
     const t0 = performance.now();
