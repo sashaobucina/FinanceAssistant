@@ -1,6 +1,7 @@
 import { performance } from "perf_hooks";
 import YAML from "yaml";
 import {
+  FinancialQuarter,
   ICompanyProfile,
   ICrypto,
   IFinancialStatement,
@@ -168,20 +169,22 @@ export class Requester {
 
   public getFinancialStatement(
     financialStatement: string,
-    symbol: string
+    symbol: string,
+    period?: FinancialQuarter
   ): Promise<IFinancialStatement> {
     const baseUrl = `https://financialmodelingprep.com/api/v2/financials/${financialStatement}/${symbol}`;
+    const forQuarter = period === undefined ? "" : `&period=${period}`;
     const t0 = performance.now();
     const promises: Array<Promise<any>> = [
       this.httpRequest({
         json: true,
         method: "GET",
-        uri: `${baseUrl}?datatype=json`
+        uri: `${baseUrl}?datatype=json${forQuarter}`
       }),
       this.httpRequest({
         json: true,
         method: "GET",
-        uri: `${baseUrl}?datatype=csv`
+        uri: `${baseUrl}?datatype=csv${forQuarter}`
       })
     ];
     return Promise.all(promises).then((results: any[]) => {

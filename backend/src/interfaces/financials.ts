@@ -1,5 +1,7 @@
 export type NumberOrNull = number | null;
 
+export type FinancialQuarter = "quarter";
+
 /* Financial statement interfaces */
 export interface IFinancialStatement {
   csv: string;
