@@ -5,7 +5,9 @@
       "income statement for %ticker%",
       "give me the income statement for %ticker%",
       "what is the income statement for %ticker%",
-      "income statment %ticker%"
+      "income statment %ticker%",
+      "please show the income statement for %ticker%",
+      "%ticker% income statement"
     ]
   },
   {
@@ -14,7 +16,9 @@
       "balance sheet for %ticker%",
       "give me the balance sheet for %ticker%",
       "what is the balance sheet for %ticker%",
-      "balance sheet %ticker%"
+      "balance sheet %ticker%",
+      "please show the balance sheet for %ticker%",
+      "%ticker% balance sheet"
     ]
   },
   {
@@ -23,7 +27,9 @@
       "cash flow for %ticker%",
       "what is the cash flow for %ticker%",
       "give the cash flow for %ticker%",
-      "cash flow %ticker%"
+      "cash flow %ticker%",
+      "please show the cash flow for %ticker%",
+      "%ticker% cash flow"
     ]
   },
   {
