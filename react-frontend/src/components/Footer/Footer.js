@@ -32,7 +32,7 @@ class Footer extends Component {
               </a>
             </MDBNavItem>
             <MDBNavItem className="mr-3 ml-3">
-              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sasha-obucina-0b51a2173/">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sasha-obucina/">
                 <MDBIcon className="light-blue-text hoverable" fab icon="linkedin-in" size="lg"/>
               </a>
             </MDBNavItem>
