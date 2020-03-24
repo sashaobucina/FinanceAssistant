@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { MDBDataTable, MDBBtn, MDBIcon, MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { CopyToClipboard} from "react-copy-to-clipboard";
 import axios from "axios";
 
 class SupportedSymbols extends Component {
@@ -41,10 +42,18 @@ class SupportedSymbols extends Component {
         const { companyName, symbol } = tickers[key]
         return {
           companyName,
-          symbol,
+        "symbol": <p>
+            {symbol}
+            <CopyToClipboard text={symbol}>
+                <MDBBtn className="m-3" gradient="blue" size="sm">
+                  <MDBIcon icon="copy" className="white-text" size="lg" />
+                </MDBBtn>
+            </CopyToClipboard>
+          </p>,
           logo: <img src={`https://financialmodelingprep.com/images-New-jpg/${symbol}.jpg`} alt="comapanyLogo" />
         }
       })
+      console.log(rows)
       const data = {
         columns,
         rows
