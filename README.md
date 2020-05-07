@@ -38,7 +38,7 @@ npm start
 Lastlty, traverse to the frontend directory and start the frontend component.
 
 ```bash
-cd frontend
+cd react-frontend
 npm install
 npm start
 ```
